@@ -10,33 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_04_08_145820) do
-=======
-ActiveRecord::Schema.define(version: 2020_04_08_141634) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2020_04_08_161300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-  create_table "items", force: :cascade do |t|
-    t.string "product_name"
-    t.string "quantity"
-    t.bigint "shopping_list_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["shopping_list_id"], name: "index_items_on_shopping_list_id"
-  end
-
-  create_table "shopping_lists", force: :cascade do |t|
-    t.boolean "status"
-    t.text "notes"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_shopping_lists_on_user_id"
-=======
   create_table "drivers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,7 +25,35 @@ ActiveRecord::Schema.define(version: 2020_04_08_141634) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_drivers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_drivers_on_reset_password_token", unique: true
->>>>>>> master
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "product_name"
+    t.string "quantity"
+    t.bigint "shopping_list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shopping_list_id"], name: "index_items_on_shopping_list_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.boolean "status"
+    t.bigint "shopping_list_id", null: false
+    t.bigint "driver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["driver_id"], name: "index_orders_on_driver_id"
+    t.index ["shopping_list_id"], name: "index_orders_on_shopping_list_id"
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.boolean "status"
+    t.text "notes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shopping_lists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +72,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_141634) do
   end
 
   add_foreign_key "items", "shopping_lists"
+  add_foreign_key "orders", "drivers"
+  add_foreign_key "orders", "shopping_lists"
   add_foreign_key "shopping_lists", "users"
 end
