@@ -19,7 +19,7 @@
                 required: true %>
     <%= f.input :last_name,
                 required: true %>
-    <%= f.input :location, required: true%>
+    <%= f.input :location, required: true, id: "user_location"%>
 
   </div>
 
@@ -27,5 +27,5 @@
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
-
+<%= link_to 'Back', user_session_path %>
 <%= render "devise/shared/links" %>
