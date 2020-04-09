@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :drivers
 
   root to: 'pages#home'
 
