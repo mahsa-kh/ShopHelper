@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container d-flex justify-content-center align-items-center">
+  <%= image_tag('landing_page_photo.jpg') %>
+    <div class="value-proposition px-4">
+    <h2>Stay home.</h2>
+    <h2>Someone will shop for you.</h2>
+    <br>
+    <%= link_to "Post your shopping list", root_path, class: "btn-blue" %>
+  </div>
+</div>

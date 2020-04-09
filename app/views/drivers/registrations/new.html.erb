@@ -1,9 +1,13 @@
-<h2>Sign up</h2>
+<h2>Sign up as driver</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true %>
+    <%= f.input :last_name,
+                required: true %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -15,11 +19,12 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Create Account", class: "btn-blue" %>
   </div>
 <% end %>
-
+<%= link_to 'Back', user_session_path %>
 <%= render "drivers/shared/links" %>

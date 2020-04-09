@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :drivers
 
   root to: 'pages#home'
 
-  devise_for :users
+  devise_for :users, path: 'users'
+  # eg. http://localhost:3000/users/sign_in
+  devise_for :drivers, path: 'drivers'
+  # eg. http://localhost:3000/admins/sign_in
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
