@@ -1,10 +1,14 @@
 // Specific CSS for your home-page
-.landing-photo {
-  width: 60%;
-  height: 24rem;
-}
 .container {
-  margin: 4.5rem auto;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.landing-photo {
+  width: 80%;
+  height: 90vh;
+  object-fit: cover;
+  padding: 0 auto;
 }
 
 .btn-blue {
@@ -22,4 +26,17 @@
 .btn-blue:hover {
   background: #3572ea;
   color: white;
+}
+
+.value-proposition {
+  position: absolute;
+  bottom: 56px;
+  right: 80px;
+  background-color: rgb(255,255,255);
+  padding: 24px 40px;
+  border: 1px solid rgb(240,240,240);
+  border-radius: 2px;
+  // box-shadow: 1px 1px 2px rgb(220,220,220);
+} h2 {
+  font-weight: bolder;
 }

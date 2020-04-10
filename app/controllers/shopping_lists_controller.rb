@@ -2,6 +2,10 @@ class ShoppingListsController < ApplicationController
 
   before_action :find_shoppingList, only: [:show, :edit, :update]
 
+  def index
+    # @shopping_list = ShoppingList.all
+  end
+
   def new
     @shoppingList = ShoppingList.new
     @items = Item.new
