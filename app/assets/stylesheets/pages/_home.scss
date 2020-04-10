@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.landing-photo {
+  width: 60%;
+  height: 24rem;
+}
+.container {
+  margin: 4.5rem auto;
+}
+
+.btn-blue {
+  text-decoration: none;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #3069e0;
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+  transition: 0.3s;
+}
+
+.btn-blue:hover {
+  background: #3572ea;
+  color: white;
+}

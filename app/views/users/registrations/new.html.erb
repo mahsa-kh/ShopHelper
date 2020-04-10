@@ -1,0 +1,40 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="title px-4">
+    <h2>Fill the fields to</h2>
+    <h2 style="font-weight: bolder;">publish your shopping list</h2>
+    <%= link_to "Want to help? Sign up here", new_driver_registration_path %>
+  </div>
+  <div class="user-signup-form">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :first_name,
+                    required: true %>
+        <%= f.input :last_name,
+                    required: true %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+
+        <%= f.input :location, required: true, id: "user_location"%>
+           <%= f.input :photo, as: :file %>
+
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "btn-blue" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', user_session_path %>
+    <%= render "users/shared/links" %>
+  </div>
+</div>
