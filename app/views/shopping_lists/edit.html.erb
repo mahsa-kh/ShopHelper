@@ -1,2 +1,8 @@
 <h1>ShoppingLists#edit</h1>
 <p>Find me in app/views/shopping_lists/edit.html.erb</p>
+
+
+<%= render 'form', shopping_list: @shopping_list %>
+
+<%= link_to 'Show', @shopping_list %> |
+<%= link_to 'Back', shopping_lists_path %>

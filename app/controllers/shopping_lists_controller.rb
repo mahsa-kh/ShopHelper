@@ -2,16 +2,18 @@ class ShoppingListsController < ApplicationController
   before_action :set_shopping_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @shopping_lists = Shopping_list.all?
+    @shopping_lists = policy_scope(Shopping_list).order(created_at: :desc)
   end
 
   def new
     @shopping_list = Shopping_list.new
+    authorize @shopping_list
   end
 
   def create
     @shopping_list = Shopping_list.new(shopping_list_params)
     @shopping_list.user = current_user
+    authorize @shopping_list
 
     if shopping_list.save
       redirect_to @shopping_list, notice: "the shopping list was successfully created"
@@ -21,6 +23,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def show
+    authorize @shopping_list
   end
 
   def edit

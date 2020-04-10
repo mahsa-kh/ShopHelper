@@ -2,16 +2,18 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all?
+    @orders = policy_scope(Order).order(created_at: :desc)
   end
 
   def new
     @order = Order.new
+    authorize @order
   end
 
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    authorize @order
 
     if order.save
       redirect_to @order, notice: "the order was successfully created"
@@ -21,6 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    authorize @order
   end
 
   def edit

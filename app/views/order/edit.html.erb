@@ -1,2 +1,8 @@
 <h1>Order#edit</h1>
 <p>Find me in app/views/oder/edit.html.erb</p>
+
+
+<%= render 'form', order: @order %>
+
+<%= link_to 'Show', @order %> |
+<%= link_to 'Back', orders_path %>

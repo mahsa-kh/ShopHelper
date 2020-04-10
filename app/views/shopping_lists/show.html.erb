@@ -1,2 +1,15 @@
 <h1>ShoppingLists#show</h1>
 <p>Find me in app/views/shopping_lists/show.html.erb</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shopping_list.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @shopping_list.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_shopping_list_path(@shopping_list) %> |
+<%= link_to 'Back', shopping_lists_path %>
