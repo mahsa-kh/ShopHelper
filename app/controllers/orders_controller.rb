@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def mark_as_delivered
     @order = Order.find(params[:id])
-    # order is done
+    # order is done ==> order.status = false
     @order.status = false
     @order.save
     redirect_to picks_path(@order.driver)
