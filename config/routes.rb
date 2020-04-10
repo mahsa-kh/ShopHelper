@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :drivers
 
+  resources :shopping_lists, only: [:index]
+  
   root to: 'pages#home'
 
   devise_for :users
