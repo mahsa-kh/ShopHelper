@@ -32,7 +32,7 @@
   <%= @shoppingList.user.last_name %>
   <%= @shoppingList.user.location %>
   <!-- Here we need to add, user photo + map + other info? -->
-    <%= link_to "help #{@shoppingList.user.first_name} with the shopping list", create_order_path(@shoppingList), class: "btn btn-ghost" %>
+    <%= link_to "help #{@shoppingList.user.first_name} with the shopping list", create_order_path(@shoppingList.id), class: "btn btn-ghost" %>
 
 <% elsif current_user %>
   <%if @shoppingList.status %>

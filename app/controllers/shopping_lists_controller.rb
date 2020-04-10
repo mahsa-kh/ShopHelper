@@ -9,7 +9,8 @@ class ShoppingListsController < ApplicationController
 
   def create
     @shoppingList = ShoppingList.new(status: true)
-    @shoppingList.user = current_user
+    # @shoppingList.user = current_user
+    @shoppingList.user = User.find(6)
 
     if @shoppingList.save!
       redirect_to edit_shopping_list_path(@shoppingList)
@@ -37,25 +38,26 @@ class ShoppingListsController < ApplicationController
   end
 
 
-  #This method return ONLY ONE ShoppingList
+  #This method returns ONLY ONE ShoppingList
   def show
   end
 
   def create_order
     @shoppingList = ShoppingList.find(params[:id])
-    @order = Order.new(status: false)
+    @order = Order.new(status: true)
     @order.driver = current_driver
-    @order.shoppingList = @shoppingList
-    # What does Order.name means? Name is applied to what?
-    @order.save!
-    raise
-    redirect_to picks_path
+    @order.shopping_list = @shoppingList
+    if @order.save!
+      redirect_to picks_path(@order.driver_id)
+    else
+      render :show
+    end
   end
 
 
-  # def picks
-  #   @orders = Order.where("driver_id = ?", current_driver.id)
-  # end
+  def picks
+    @orders = Order.where("driver_id = ?", params[:driver_id])
+  end
 
 private
 

@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show]
   end
 
-  get "/shopping_lists/:id", to: "shopping_lists#create_order", as: "create_order"
-  get "/shopping_lists/", to: "shopping_lists#picks", as: "picks"
+  get "/shopping_lists/:id/create_order", to: "shopping_lists#create_order", as: "create_order"
+  get "/shopping_lists/:driver_id/picks", to: "shopping_lists#picks", as: "picks"
 
 
 
