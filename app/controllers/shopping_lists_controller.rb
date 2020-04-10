@@ -36,8 +36,25 @@ class ShoppingListsController < ApplicationController
     end
   end
 
+  #This method return ONLY ONE ShoppingList
   def show
   end
+
+  def create_order
+    @shoppingList = ShoppingList.find(params[:id])
+    @order = Order.new(status: false)
+    @order.driver = current_driver
+    @order.shoppingList = @shoppingList
+    # What does Order.name means? Name is applied to what?
+    @order.save!
+    raise
+    redirect_to picks_path
+  end
+
+
+  # def picks
+  #   @orders = Order.where("driver_id = ?", current_driver.id)
+  # end
 
 
 private

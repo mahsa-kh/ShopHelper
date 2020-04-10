@@ -21,9 +21,25 @@
   </tbody>
 </table>
 
-<p>Your note: </p>
+<p>Shopping note: </p>
 <p><%= @shoppingList.notes %></p>
-<p><%= @shoppingList.status %></p>
 
 
-<p>Please wait for a helper to assist you with your request</p>
+
+
+<% if current_driver %>
+  <%= @shoppingList.user.first_name %>
+  <%= @shoppingList.user.last_name %>
+  <%= @shoppingList.user.location %>
+  <!-- Here we need to add, user photo + map + other info? -->
+    <%= link_to "help #{@shoppingList.user.first_name} with the shopping list", create_order_path(@shoppingList), class: "btn btn-ghost" %>
+
+<% elsif current_user %>
+  <%if @shoppingList.status %>
+    <p>Pending....</p>
+
+  <% else %>
+    <p>On its way</p>
+  <% end %>
+<% end %>
+
