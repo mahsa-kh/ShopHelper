@@ -36,6 +36,7 @@ class ShoppingListsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   #This method return ONLY ONE ShoppingList
   def show
   end
@@ -56,6 +57,11 @@ class ShoppingListsController < ApplicationController
   #   @orders = Order.where("driver_id = ?", current_driver.id)
   # end
 
+=======
+  def show
+  end
+
+>>>>>>> master
 
 private
 

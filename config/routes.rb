@@ -7,12 +7,15 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
   resources :shopping_lists, only: [:new, :create, :show, :edit, :update, :picks] do
     resources :items, only: [:new, :create, :show]
   end
 
   get "/shopping_lists/:id", to: "shopping_lists#create_order", as: "create_order"
   get "/shopping_lists/", to: "shopping_lists#picks", as: "picks"
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
