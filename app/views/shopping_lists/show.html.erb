@@ -9,12 +9,12 @@
   <tbody>
     <% if @items %>
         <% n = 0 %>
-        <% @items.each do |i| %>
+        <% @items.each do |item| %>
         <tr>
           <% n += 1 %>
           <th scope="row"><%= n %></th>
-          <td><%= i.product_name %></td>
-          <td><%= i.quantity %></td>
+          <td><%= item.product_name %></td>
+          <td><%= item.quantity %></td>
         </tr>
         <% end %>
       <% end %>
@@ -28,21 +28,19 @@
 
 <% if current_driver %>
   <p>Shopping note: </p>
-  <p><%= @shoppingList.notes %></p>
-  <%= @shoppingList.user.first_name %>
-  <%= @shoppingList.user.last_name %>
-  <%= @shoppingList.user.location %>
+  <p><%= @shopping_list.notes %></p>
+  <%= @shopping_list.user.first_name %>
+  <%= @shopping_list.user.last_name %>
+  <%= @shopping_list.user.location %>
   <!-- Here we need to add, user photo + map + other info? -->
-  <%= link_to "help #{@shoppingList.user.first_name} with the shopping list", create_order_path(@shoppingList.id), class: "btn btn-ghost" %>
-
+  <% if @shopping_list.status %>
+    <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-ghost" %>
+  <% else %>
+    <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
+  <% end %>
 <% elsif current_user %>
-  <div class="m-3">
-    <%= simple_form_for (@shoppingList, remote:true) do |s| %>
-      <%= s.input :notes %>
-      <%= s.submit "Add note"  %>
-    <% end %>
-  </div>
-  <%if @shoppingList.status %>
+
+  <%if @shopping_list.status %>
     <p>Pending....</p>
   <% else %>
     <p>On its way</p>

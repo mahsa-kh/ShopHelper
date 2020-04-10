@@ -23,13 +23,13 @@
 
 
 <div class="m-3">
-<%= simple_form_for (@shoppingList, remote:true) do |s| %>
-  <%= s.simple_fields_for :items do |i| %>
-    <%= i.input :product_name %>
-    <%= i.input :quantity %>
+<%= simple_form_for (@shopping_list, remote:true) do |shop| %>
+  <%= s.simple_fields_for :items do |item| %>
+    <%= item.input :product_name %>
+    <%= item.input :quantity %>
   <% end %>
-  <%= s.submit "Add item to shopping list"  %>
+  <%= shop.submit "Add item to shopping list"  %>
 <% end %>
 </div>
 
-<%= link_to "Done with shopping", shopping_list_path(@shoppingList.id), class: "btn btn-ghost" %>
+<%= link_to "Done with shopping", shopping_list_path(@shopping_list.id), class: "btn btn-ghost" %>

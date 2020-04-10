@@ -3,17 +3,15 @@ class ShoppingListsController < ApplicationController
   before_action :find_shoppingList, only: [:show, :edit, :update]
 
   def new
-    @shoppingList = ShoppingList.new
+    @shopping_list = ShoppingList.new
     @items = Item.new
   end
 
   def create
-    @shoppingList = ShoppingList.new(status: true)
-    # @shoppingList.user = current_user
-    @shoppingList.user = User.find(6)
+    @shopping_list = ShoppingList.new(status: true, user: current_user)
 
-    if @shoppingList.save!
-      redirect_to edit_shopping_list_path(@shoppingList)
+    if @shopping_list.save!
+      redirect_to edit_shopping_list_path(@shopping_list)
     else
       render :new
     end
@@ -26,12 +24,12 @@ class ShoppingListsController < ApplicationController
 
   def update
     @new_item = Item.new(form_params[:items])
-    @shoppingList.notes = form_params[:notes]
-    @new_item.shopping_list = @shoppingList
+    @shopping_list.update(notes: form_params[:notes])
+    @new_item.shopping_list = @shopping_list
 
     if @new_item.save!
       @items = Item.where("shopping_list_id = ?", params[:id])
-      redirect_to edit_shopping_list_path(@shoppingList)
+      redirect_to edit_shopping_list_path(@shopping_list)
     else
       render :new
     end
@@ -42,33 +40,11 @@ class ShoppingListsController < ApplicationController
   def show
   end
 
-  def create_order
-    @shoppingList = ShoppingList.find(params[:id])
-    @order = Order.new(status: true)
-    @order.driver = current_driver
-    @order.shopping_list = @shoppingList
-    if @order.save!
-      redirect_to picks_path(@order.driver_id)
-    else
-      render :show
-    end
-  end
-
-
-  def picks
-    @orders = Order.where("driver_id = ?", params[:driver_id])
-  end
-
-  def delivered?
-    @order.status = false;
-    @order.shopping_list.status = false;
-    redirect_to picks_path(@order.driver_id)
-  end
 
 private
 
   def find_shoppingList
-    @shoppingList = ShoppingList.find(params[:id])
+    @shopping_list = ShoppingList.find(params[:id])
     @items = Item.where("shopping_list_id = ?", params[:id])
   end
 
