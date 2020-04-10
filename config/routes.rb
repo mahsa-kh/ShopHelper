@@ -1,30 +1,16 @@
 Rails.application.routes.draw do
-  get 'shopping_lists/index'
-  get 'shopping_lists/new'
-  get 'shopping_lists/create'
-  get 'shopping_lists/show'
-  get 'shopping_lists/edit'
-  get 'shopping_lists/update'
-  get 'shopping_lists/destroy'
-  get 'order/index'
-  get 'order/new'
-  get 'order/create'
-  get 'order/show'
-  get 'order/edit'
-  get 'order/update'
-  get 'order/destroy'
-  get 'items/index'
-  get 'items/new'
-  get 'items/create'
-  get 'items/show'
-  get 'items/edit'
-  get 'items/update'
-  get 'items/destroy'
-  devise_for :drivers
 
   root to: 'pages#home'
 
-  devise_for :users
+  devise_for :users, path: 'users'
+  # eg. http://localhost:3000/users/sign_in
+  devise_for :drivers, path: 'drivers'
+  # eg. http://localhost:3000/admins/sign_in
+
+  resources :shopping_lists, only: [:new, :create, :show, :edit, :update] do
+    resources :items, only: [:new, :create, :show]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+

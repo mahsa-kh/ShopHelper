@@ -1,2 +1,3 @@
-<h1>ShoppingLists#new</h1>
-<p>Find me in app/views/shopping_lists/new.html.erb</p>
+<%= simple_form_for(@shoppingList) do |f| %>
+  <%= f.submit "Add to your shopping list" %>
+<% end %>
