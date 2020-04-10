@@ -12,7 +12,7 @@ Your Shopping Lists Orders:
 <% if order.status %>
   <%= link_to "Mark as Delivered!", order_delivered_path(order), method: :post, remote:true , class: "btn btn-ghost" %>
 <% else %>
-  <p>This order is delivered</p>
+  <p class= "btn-ghost">This order is delivered</p>
 <% end %>
   <%= link_to "View Shopping List Details!", shopping_list_path(order.shopping_list), class: "btn btn-ghost" %>
   <% end %>

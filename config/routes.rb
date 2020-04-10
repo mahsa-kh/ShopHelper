@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'items/create'
   root to: 'pages#home'
 
   devise_for :users, path: 'users'

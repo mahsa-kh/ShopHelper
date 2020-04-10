@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order
-    #Shopping list status: false --> The order is taken
+    #Set shopping list status: false --> The order is taken
     @shopping_list.update(status: false)
     @order = Order.new(status: true, driver: current_driver, shopping_list: @shopping_list)
     if @order.save!
@@ -32,3 +32,5 @@ class OrdersController < ApplicationController
     @shopping_list = ShoppingList.find(params[:id])
   end
 end
+
+

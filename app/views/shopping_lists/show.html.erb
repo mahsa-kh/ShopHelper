@@ -1,3 +1,4 @@
+
 <table class="table">
   <thead>
     <tr>
@@ -39,6 +40,15 @@
     <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
   <% end %>
 <% elsif current_user %>
+  <%if !@shopping_list.notes %>
+    <div class="m-3">
+      <%= simple_form_for(@shopping_list, remote: true) do |shop| %>
+          <%= shop.input :notes %>
+        <%= shop.submit "Add a note" , class: "btn btn-ghost"  %>
+      <% end %>
+    </div>
+  <% end %>
+
 
   <%if @shopping_list.status %>
     <p>Pending....</p>
