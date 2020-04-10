@@ -23,12 +23,11 @@
 
 
 <div class="m-3">
-<%= simple_form_for @shoppingList do |s| %>
+<%= simple_form_for (@shoppingList, remote:true) do |s| %>
   <%= s.simple_fields_for :items do |i| %>
     <%= i.input :product_name %>
     <%= i.input :quantity %>
   <% end %>
-  <%= s.input :notes %>
   <%= s.submit "Add item to shopping list"  %>
 <% end %>
 </div>

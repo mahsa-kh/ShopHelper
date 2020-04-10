@@ -59,6 +59,12 @@ class ShoppingListsController < ApplicationController
     @orders = Order.where("driver_id = ?", params[:driver_id])
   end
 
+  def delivered?
+    @order.status = false;
+    @order.shopping_list.status = false;
+    redirect_to picks_path(@order.driver_id)
+  end
+
 private
 
   def find_shoppingList
