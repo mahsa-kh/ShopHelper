@@ -2,8 +2,17 @@ class ShoppingListsController < ApplicationController
 
   before_action :find_shoppingList, only: [:show, :edit, :update]
 
-  def index
+ 
+   def index
+    @users = User.geocoded
     @shopping_lists = ShoppingList.all
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user })
+      }
+    end
   end
 
   def new
