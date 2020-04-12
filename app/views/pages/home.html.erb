@@ -1,9 +1,34 @@
-<div class="container">
-  <%= image_tag('landing-photo.jpg', class: "landing-photo") %>
-</div>
-<div class="value-proposition">
-  <h2>Stay home.</h2>
-  <h2>Someone will shop for you.</h2>
-  <br>
-  <%= link_to "Post your shopping list", new_shopping_list_path, class: "btn-blue" %>
-</div>
+<body class="homepage">
+  <div class="banner">
+    <%= image_tag('landing-photo.jpg', class: "landing-photo") %>
+  </div>
+  <div class="value-proposition">
+    <h2>Stay home.</h2>
+    <h2>Someone will shop for you.</h2>
+    <br>
+    <%= link_to "Post your shopping list", new_shopping_list_path, class: "btn-blue" %>
+  </div>
+  <div class="container">
+    <div class="cards">
+      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <div class="content d-block">
+          <div style="font-size: 24px">Create your shopping list.</div>
+          <%= link_to "Want to publish a list? Sign up here", new_user_registration_path, class: "card-link" %>
+        </div>
+      </div>
+
+      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+        <div class="content d-block">
+          <div style="font-size: 24px">Let our drivers shop for you.</div>
+          <%= link_to "Want to deliver? Sign up here", new_driver_registration_path, class: "card-link" %>
+        </div>
+      </div>
+
+      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+        <div class="content d-block">
+          <div style="font-size: 24px">The order is delivered at your door.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
