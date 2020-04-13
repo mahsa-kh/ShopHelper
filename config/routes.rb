@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   get 'items/create'
   root to: 'pages#home'
 
+
+
   devise_for :users, path: 'users'
   # eg. http://localhost:3000/users/sign_in
   devise_for :drivers, path: 'drivers'
   # eg. http://localhost:3000/admins/sign_in
 
-  resources :shopping_lists, only: [:index, :new, :create, :show, :edit, :update, :picks] do
+  resources :shopping_lists, only: [:index, :new, :create, :show, :edit, :update, :picks, :view_all] do
     resources :items, only: [:new, :create, :show]
   end
 
@@ -21,3 +23,4 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
