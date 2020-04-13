@@ -1,3 +1,4 @@
+
 <table class="table">
   <thead>
     <tr>
@@ -23,14 +24,11 @@
 
 
 <div class="m-3">
-<%= simple_form_for @shoppingList do |s| %>
-  <%= s.simple_fields_for :items do |i| %>
-    <%= i.input :product_name %>
-    <%= i.input :quantity %>
-  <% end %>
-  <%= s.input :notes %>
-  <%= s.submit "Add item to shopping list"  %>
+<%= simple_form_for([@shopping_list, @item], remote: true) do |item| %>
+    <%= item.input :product_name %>
+    <%= item.input :quantity %>
+  <%= item.submit "Add item to shopping list"   %>
 <% end %>
 </div>
 
-<%= link_to "Done with shopping", shopping_list_path, class: "btn btn-ghost" %>
+<%= link_to "Done with shopping", shopping_list_path(@shopping_list), class: "btn btn-ghost" %>

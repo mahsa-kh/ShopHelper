@@ -14,7 +14,7 @@ puts "Drivers Creation"
     driver = Driver.new(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      location: Faker::Address.full_address,
+      # location: Faker::Address.full_address,
       available: true,
       email: Faker::Internet.email, 
       password: Faker::Alphanumeric.alpha(number: 10)
