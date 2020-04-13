@@ -1,11 +1,7 @@
-class ShoppingListPolicy < ApplicationPolicy
+class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
-    end
-
-    def new?
-      return true
     end
 
     def create?
@@ -16,7 +12,7 @@ class ShoppingListPolicy < ApplicationPolicy
       return true
     end
 
-    def destroy?
+    def show?
       return true
     end
 

@@ -26,6 +26,12 @@
           <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
+          <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+            <span><strong>Cool!</strong> 🎉 let's do it!</span>
+            <a data-dismiss="alert" aria-label="Close">
+              <i class="fas fa-times"></i>
+            </a>
+          </div>
           <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
@@ -48,9 +54,9 @@
       </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <%= yield %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </body>
 </html>
+

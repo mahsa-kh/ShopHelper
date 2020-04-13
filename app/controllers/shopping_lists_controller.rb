@@ -46,6 +46,9 @@ class ShoppingListsController < ApplicationController
   def show
   end
 
+  def destroy
+  end
+
 
 private
 
