@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl"
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 const initMapbox = () => {
   console.log("Hello MapBox")
@@ -27,7 +27,7 @@ const initMapbox = () => {
 		  customizedMarker.style.backgroundSize = 'contain';
 		  customizedMarker.style.width = '25px';
 		  customizedMarker.style.height = '25px';
-    	new mapboxgl.Marker()
+    	new mapboxgl.Marker(customizedMarker)
     	.setLngLat([ marker.lng, marker.lat ])
     	.setPopup(popup)
     	.addTo(map)

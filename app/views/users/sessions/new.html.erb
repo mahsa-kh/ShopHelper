@@ -1,7 +1,7 @@
 <div class="container d-flex justify-content-center align-items-center">
   <div class="title px-4">
     <h2>Welcome back User!</h2>
-    <%= link_to "Login as driver", new_driver_session_path %>
+    <%= link_to "Don't have an account? Create one!", new_user_registration_path %>
   </div>
   <div class="user-login-form">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,6 @@
         <%= f.button :submit, "Log in", class: "btn-blue" %>
       </div>
     <% end %>
-
     <%= render "users/shared/links" %>
   </div>
 </div>
