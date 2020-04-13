@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class=".col-sm-12 col-md-2">
+    <div class=".col-sm-12 col-md-4">
     </div>
-    <div class=".col-sm-12 col-md-8">
+    <div class=".col-sm-12 col-md-4">
       <div class="card">
           <% if @items %>
             <div class="card-title">Grocery List:</div>
@@ -17,15 +17,15 @@
               <%= simple_form_for([@shopping_list, @item], remote: true, class: 'form-inline') do |item| %>
                 <%= item.input_field :quantity, size: '5', placeholder: 'Qnty'  %>
                 <%= item.input_field :product_name, size: '30', placeholder: 'Product Name' %>
-                <%= item.submit "+" , class: "card-btn"  %>
+                <%= item.submit "+" , class: "card-btn", color: "#167FFB"  %>
               <% end %>
           </div>
           <div class="btn-layer">
-            <%= link_to "Post shopping list", shopping_list_path(@shopping_list), class: "btn-blue" %>
+            <%= link_to "Post shopping list", shopping_list_path(@shopping_list), class: "btn btn-gradient" %>
           </div>
         </div>
     </div>
-    <div class=".col-sm-12 col-md-2">
+    <div class=".col-sm-12 col-md-4">
     </div>
   </div>
 </div>

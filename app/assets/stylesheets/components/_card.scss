@@ -22,9 +22,12 @@
   width: 50px;
   top: 240px;
   left: 50px;
+  color: linear-gradient(#167FFB, #0F60C4);
+  font-color: linear-gradient(#167FFB, #0F60C4);
 }
 
 .card {
+  align: center;
   overflow: hidden;
   width: 400px;
   height: 500px;
@@ -177,15 +180,5 @@
   opacity: 1;
 }
 
-.fa-truck {
-
-}
-.fa-check-circle{
-
-}
-
-.fa-eye{
-
-}
 
 
