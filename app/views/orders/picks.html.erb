@@ -1,0 +1,19 @@
+Your Shopping Lists Orders:
+
+<!-- ADDING MAP WITH MARKS -- AND THE DISTANCE STILL MISSING ON THIS PAGE -->
+
+<% @orders.each do |order| %>
+<p>
+
+  <p><%=  order.user.first_name %></p>
+  <p><%=  order.user.location %></p>
+  <p>Total items in the shopping list: <%=  order.items.count %></p>
+</p>
+<% if order.status %>
+  <%= link_to "Mark as Delivered!", order_delivered_path(order), method: :post, remote:true , class: "btn btn-ghost" %>
+<% else %>
+  <p class= "btn-ghost">This order is delivered</p>
+<% end %>
+  <%= link_to "View Shopping List Details!", shopping_list_path(order.shopping_list), class: "btn btn-ghost" %>
+  <% end %>
+
