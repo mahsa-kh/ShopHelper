@@ -1,2 +1,33 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @items %>
+        <% n = 0 %>
+        <% @items.each do |i| %>
+        <tr>
+          <% n += 1 %>
+          <th scope="row"><%= n %></th>
+          <td><%= i.product_name %></td>
+          <td><%= i.quantity %></td>
+        </tr>
+        <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+
+<div class="m-3">
+<%= simple_form_for([@shopping_list, @item], remote: true) do |item| %>
+    <%= item.input :product_name %>
+    <%= item.input :quantity %>
+  <%= item.submit "Add item to shopping list"   %>
+<% end %>
+</div>
+
+<%= link_to "Done with shopping", shopping_list_path(@shopping_list), class: "btn btn-ghost" %>

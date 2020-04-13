@@ -1,3 +1,4 @@
+
 <table class="table">
   <thead>
     <tr>
@@ -9,21 +10,49 @@
   <tbody>
     <% if @items %>
         <% n = 0 %>
-        <% @items.each do |i| %>
+        <% @items.each do |item| %>
         <tr>
           <% n += 1 %>
           <th scope="row"><%= n %></th>
-          <td><%= i.product_name %></td>
-          <td><%= i.quantity %></td>
+          <td><%= item.product_name %></td>
+          <td><%= item.quantity %></td>
         </tr>
         <% end %>
       <% end %>
   </tbody>
 </table>
 
-<p>Your note: </p>
-<p><%= @shoppingList.notes %></p>
-<p><%= @shoppingList.status %></p>
 
 
-<p>Please wait for a helper to assist you with your request</p>
+
+
+
+<% if current_driver %>
+  <p>Shopping note: </p>
+  <p><%= @shopping_list.notes %></p>
+  <%= @shopping_list.user.first_name %>
+  <%= @shopping_list.user.last_name %>
+  <%= @shopping_list.user.location %>
+  <!-- Here we need to add, user photo + map + other info? -->
+  <% if @shopping_list.status %>
+    <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-ghost" %>
+  <% else %>
+    <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
+  <% end %>
+<% elsif current_user %>
+  <%if !@shopping_list.notes %>
+    <div class="m-3">
+      <%= simple_form_for(@shopping_list, remote: true) do |shop| %>
+          <%= shop.input :notes %>
+        <%= shop.submit "Add a note" , class: "btn btn-ghost"  %>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <%if @shopping_list.status %>
+    <p>Pending....</p>
+  <% else %>
+    <p>On its way</p>
+  <% end %>
+<% end %>

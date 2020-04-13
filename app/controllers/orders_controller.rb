@@ -1,40 +1,34 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
-
-  def index
-    @order = policy_scope(Order).reverse
-  end
-
-  def new
-    @order = Order.new
-    authorize @order
-  end
-
-  def create
-    @order.user = current_user
-  end
-
+  before_action :set_shopping_list, only: [ :show, :create_order]
   def show
   end
 
-  def edit
+  def mark_as_delivered
+    @order = Order.find(params[:id])
+    # order is done ==> order.status = false
+    @order.status = false
+    @order.save
+    redirect_to picks_path(@order.driver)
   end
 
-  def update
+  def picks
+    @orders = Order.where("driver_id = ?", params[:driver_id])
   end
 
-  def destroy
+  def create_order
+    #Set shopping list status: false --> The order is taken
+    @shopping_list.update(status: false)
+    @order = Order.new(status: true, driver: current_driver, shopping_list: @shopping_list)
+    if @order.save!
+      redirect_to picks_path(@order.driver)
+    else
+      render :picks
+    end
   end
-
 
   private
 
-  def set_order
-  end
-
-  def order_params
+  def set_shopping_list
+    @shopping_list = ShoppingList.find(params[:id])
   end
 end

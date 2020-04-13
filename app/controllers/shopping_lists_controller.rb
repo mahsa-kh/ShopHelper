@@ -15,34 +15,23 @@ class ShoppingListsController < ApplicationController
   end
 
   def create
-    @shoppingList = ShoppingList.new(status: true)
-    @shoppingList.user = current_user
+    @shopping_list = ShoppingList.new(status: true, user: current_user)
 
-    if @shoppingList.save!
-      redirect_to edit_shopping_list_path(@shoppingList)
+    if @shopping_list.save!
+      redirect_to new_shopping_list_item_path(@shopping_list)
     else
       render :new
     end
-  end
-
-  def edit
-    @item = Item.new
   end
 
 
   def update
-    @new_item = Item.new(form_params[:items])
-    @shoppingList.notes = form_params[:notes]
-    @new_item.shopping_list = @shoppingList
-
-    if @new_item.save!
-      @items = Item.where("shopping_list_id = ?", params[:id])
-      redirect_to edit_shopping_list_path(@shoppingList)
-    else
-      render :new
-    end
+    @shopping_list.update(notes: form_params)
+    redirect_to shopping_list_path(@shopping_list)
   end
 
+
+  #This method returns ONLY ONE ShoppingList
   def show
   end
 
@@ -53,7 +42,7 @@ class ShoppingListsController < ApplicationController
 private
 
   def find_shoppingList
-    @shoppingList = ShoppingList.find(params[:id])
+    @shopping_list = ShoppingList.find(params[:id])
     @items = Item.where("shopping_list_id = ?", params[:id])
     authorize @shopping_list
 
@@ -61,6 +50,6 @@ private
 
 
   def form_params
-    params.require(:shopping_list).permit(:notes, items: [:product_name, :quantity])
+    params.require(:shopping_list).permit(:notes)
   end
 end
