@@ -9,13 +9,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="homepage">
     <%= render 'pages/navbar' %>
+    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <footer>
+      <%= render 'pages/footer' %>
+    </footer>
   </body>
-  <footer>
-    <%= render 'pages/footer' %>
-  </footer>
 </html>
