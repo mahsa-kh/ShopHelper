@@ -8,6 +8,29 @@
   transition: opacity 0.3s ease;
 }
 
+.btn-blue {
+  color: #0779e4;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+
+.btn-ghost-card {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  font-size: 12px;
+  width: 24px;
+}
+
 .btn-ghost-circle {
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
