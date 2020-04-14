@@ -6,7 +6,15 @@ class ShoppingListsController < ApplicationController
  
    def index
     @users = User.geocoded
-    @shopping_lists = ShoppingList.all
+    # @shopping_lists = ShoppingList.all
+   @shopping_lists = []
+   
+   @users.each do |user| 
+   if user.shopping_list != nil
+   @shopping_lists << user.shopping_list
+   end
+      end
+
     @markers = @users.map do |user|
       {
         lat: user.latitude,
