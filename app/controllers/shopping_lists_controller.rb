@@ -1,10 +1,23 @@
 class ShoppingListsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update] # This logic overrides line 6. Need to merge line 6 logic in this line.
+  before_action :authenticate_driver!, only: :index
+  before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
+  before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
+  before_action :find_shoppingList, only: [:update, :show]
 
-  before_action :find_shoppingList, only: [:show, :edit, :update, :destroy]
-
-  def index
-    # @shopping_list = ShoppingList.all
+   def index
+    @users = User.geocoded
+    @shopping_lists = ShoppingList.all
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        picture: helpers.asset_url("sb.png")
+      }
+    end
   end
+
 
   def new
     @shopping_list = ShoppingList.new
@@ -56,5 +69,5 @@ private
     params.require(:shopping_list).permit(:notes)
   end
 
-
 end
+

@@ -1,19 +1,45 @@
-Your Shopping Lists Orders:
 
-<!-- ADDING MAP WITH MARKS -- AND THE DISTANCE STILL MISSING ON THIS PAGE -->
+<div class="container">
+  <div class="row justify-content-left mt-5">
+        <div class=".col-sm-12 col-md-6">
+      <% @orders.each do |order| %>
+        <div class="notification ml-5">
 
-<% @orders.each do |order| %>
-<p>
+          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+          <div class="notification-content">
+            <p><small><%= order.user.first_name %>    - Distance: </small></p>
+            <p><strong><%=  order.items.count %> items</strong> </p>
+            <p> <div class="notification-actions-drv">
+              <% if !order.status %>
+                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                  <i class="far fa-check-circle"></i>
+                  <% end %>
+              <%end%>
+              </div>
+            </p>
+          </div>
 
-  <p><%=  order.user.first_name %></p>
-  <p><%=  order.user.location %></p>
-  <p>Total items in the shopping list: <%=  order.items.count %></p>
-</p>
-<% if order.status %>
-  <%= link_to "Mark as Delivered!", order_delivered_path(order), method: :post, remote:true , class: "btn btn-ghost" %>
-<% else %>
-  <p class= "btn-ghost">This order is delivered</p>
-<% end %>
-  <%= link_to "View Shopping List Details!", shopping_list_path(order.shopping_list), class: "btn btn-ghost" %>
-  <% end %>
+          <div class="notification-actions-drv ">
+                <% if order.status %>
+                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                  <i class="fas fa-truck"></i>
+                  <%end%>
+                <% end %>
+                <%= link_to  shopping_list_path(order.shopping_list) do %>
+                  <i class="far fa-eye"></i>
+                <% end %>
+          </div>
+        </div>
 
+      <% end %>
+    </div>
+
+    </div>
+    <div class=".col-sm-12 col-md-6">
+      <div class="shopper-map">
+
+      </div>
+    </div>
+
+  </div>
+</div>

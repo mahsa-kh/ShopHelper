@@ -1,34 +1,32 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class=".col-sm-12 col-md-4">
+    </div>
+    <div class=".col-sm-12 col-md-4 d-sm-inline-flex d-md-inline-flex">
+      <div class="card mt-5">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @items %>
-        <% n = 0 %>
-        <% @items.each do |i| %>
-        <tr>
-          <% n += 1 %>
-          <th scope="row"><%= n %></th>
-          <td><%= i.product_name %></td>
-          <td><%= i.quantity %></td>
-        </tr>
-        <% end %>
-      <% end %>
-  </tbody>
-</table>
-
-
-<div class="m-3">
-<%= simple_form_for([@shopping_list, @item], remote: true) do |item| %>
-    <%= item.input :product_name %>
-    <%= item.input :quantity %>
-  <%= item.submit "Add item to shopping list"   %>
-<% end %>
+            <div class="card-title">Grocery List:</div>
+            <% if @items %>
+            <% @items.each do |i| %>
+            <div class="card-items">
+              <%= i.quantity %> x
+              <%= i.product_name %>
+            </div>
+            <% end %>
+          <% end %>
+          <div class="card-form">
+              <%= simple_form_for([@shopping_list, @item], remote: true, class: 'form-inline') do |item| %>
+                <%= item.input_field :quantity, size: '5', placeholder: 'Qnty'  %>
+                <%= item.input_field :product_name, size: '30', placeholder: 'Product Name' %>
+                <%= item.submit "+" , class: "card-btn" %>
+              <% end %>
+          </div>
+          <div class="btn-layer">
+            <%= link_to "Post shopping list", shopping_list_path(@shopping_list), class: "btn btn-gradient" %>
+          </div>
+        </div>
+    </div>
+    <div class=".col-sm-12 col-md-4">
+    </div>
+  </div>
 </div>
-
-<%= link_to "Done with shopping", shopping_list_path(@shopping_list), class: "btn btn-ghost" %>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 
+  resources :shopping_lists, only: [:index]
+  
+
+
   get 'items/create'
+
   root to: 'pages#home'
 
 
