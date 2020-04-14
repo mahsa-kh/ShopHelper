@@ -3,7 +3,7 @@
     <div class=".col-sm-12 col-md-4">
     </div>
     <div class=".col-sm-12 col-md-4">
-      <div class="card">
+      <div class="card mt-5">
           <% if @items %>
             <div class="card-title">Grocery List:</div>
             <% @items.each do |i| %>
@@ -17,7 +17,7 @@
               <%= simple_form_for([@shopping_list, @item], remote: true, class: 'form-inline') do |item| %>
                 <%= item.input_field :quantity, size: '5', placeholder: 'Qnty'  %>
                 <%= item.input_field :product_name, size: '30', placeholder: 'Product Name' %>
-                <%= item.submit "+" , class: "card-btn", color: "#167FFB"  %>
+                <%= item.submit "+" , class: "card-btn" %>
               <% end %>
           </div>
           <div class="btn-layer">
