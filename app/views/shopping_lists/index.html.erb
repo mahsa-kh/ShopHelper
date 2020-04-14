@@ -13,7 +13,12 @@
                 
                 <div style = "display: flex; justify-content: space-between;">
                   <p style="font-size: 0.75rem; margin-bottom: 0px">  <%=  shoppinglist.user.items.count %> items </p>
-                  <p style="font-size: 0.75rem; margin-bottom: 0px">  <i class="fas fa-location-arrow"></i> <%=  shoppinglist.user.distance_to([params[:lat], params[:lng]]).round%> Km </p>
+                  <% if params[:lat] && params[:lng] %>
+                    <p style="font-size: 0.75rem; margin-bottom: 0px">  
+                    <i class="fas fa-location-arrow"></i> 
+                    <%=  shoppinglist.user.distance_to([params[:lat], params[:lng]]).round%> Km 
+                    </p>
+                  <% end %>
                 </div>
               </div>
             </div>
