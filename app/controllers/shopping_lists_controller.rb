@@ -2,8 +2,9 @@ class ShoppingListsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update] # This logic overrides line 6. Need to merge line 6 logic in this line.
   before_action :authenticate_driver!, only: :index
   before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
-  # before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
+  before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
   before_action :find_shoppingList, only: [:update, :show]
+
    def index
     @users = User.geocoded
     @shopping_lists = ShoppingList.all
@@ -24,8 +25,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def create
-    # @shopping_list = ShoppingList.new(status: true, user: current_user)
-    @shopping_list = ShoppingList.new(status: true, user: User.find(6))
+    @shopping_list = ShoppingList.new(status: true, user: current_user)
 
     if @shopping_list.save!
       redirect_to new_shopping_list_item_path(@shopping_list)

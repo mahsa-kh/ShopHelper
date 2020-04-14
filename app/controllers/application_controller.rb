@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!, except: :home
-  # before_action :authenticate_driver!, except: :home
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
@@ -17,7 +15,7 @@ class ApplicationController < ActionController::Base
     # return the path based on resource
     if resource.is_a?(User)
         @shopping_list = ShoppingList.find_by(user_id: resource.id)
-      if @shopping_list.nil? || @shopping_list.order.status
+      if @shopping_list.nil? || (!@shopping_list.order.nil? && @shopping_list.order.status)
          return new_shopping_list_path
       else
         return shopping_list_path(@shopping_list)
