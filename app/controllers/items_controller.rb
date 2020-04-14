@@ -11,9 +11,10 @@ class ItemsController < ApplicationController
     @new_item = Item.new(item_params)
     @shopping_list = ShoppingList.find(params[:shopping_list_id])
     @new_item.shopping_list = @shopping_list
-    if @new_item.save!
+    if @new_item.save
       redirect_to new_shopping_list_item_path(@shopping_list)
     else
+      @item = Item.new
       render :new
     end
   end

@@ -7,8 +7,8 @@
 
           <%= image_tag('cart-color.jpg', class: "avatar-large") %>
           <div class="notification-content">
-            <p><small><%= order.user.first_name %></small></p>
-            <p><%=  order.items.count %> items</strong> </p>
+            <p><small><%= order.user.first_name %>    - Distance: </small></p>
+            <p><strong><%=  order.items.count %> items</strong> </p>
             <p> <div class="notification-actions-drv">
               <% if !order.status %>
                   <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
