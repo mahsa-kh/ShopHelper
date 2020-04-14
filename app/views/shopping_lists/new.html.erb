@@ -1,6 +1,16 @@
-
-<div class="card-big">
-  <%= simple_form_for(@shopping_list) do |f| %>
-  <%= f.submit "+", class: "btn-ghost card-btn " %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class=".col-sm-12 col-md-4">
+    </div>
+    <div class=".col-sm-12 col-md-4">
+        <div class="card-empty">
+          <%= simple_form_for(@shopping_list) do |f| %>
+            <%= f.submit "+", class: "card-btn-empty"%>
+          <% end %>
+        </div>
+    </div>
+    <div class=".col-sm-12 col-md-4">
+    </div>
+  </div>
 </div>
+

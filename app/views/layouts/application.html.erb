@@ -9,13 +9,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="homepage">
     <%= render 'pages/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <% if notice  %>
+      <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+      <span><%= notice %></span>
+        <a data-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+          </a>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= alert %>
+      </div>
+    <% end %>
+    <footer>
+      <%= render 'pages/footer' %>
+    </footer>
+
   </body>
-  <footer>
-    <%= render 'pages/footer' %>
-  </footer>
 </html>

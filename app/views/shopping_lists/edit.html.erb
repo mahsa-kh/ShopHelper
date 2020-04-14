@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @items %>
+        <% n = 0 %>
+        <% @items.each do |i| %>
+        <tr>
+          <% n += 1 %>
+          <th scope="row"><%= n %></th>
+          <td><%= i.product_name %></td>
+          <td><%= i.quantity %></td>
+        </tr>
+        <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+<div class="m-3">
+<%= simple_form_for @shoppingList do |s| %>
+  <%= s.simple_fields_for :items do |i| %>
+    <%= i.input :product_name %>
+    <%= i.input :quantity %>
+  <% end %>
+  <%= s.input :notes %>
+  <%= s.submit "Add item to shopping list"  %>
+<% end %>
+</div>
+
+<%= link_to "Done with shopping", shopping_list_path, class: "btn btn-ghost" %>

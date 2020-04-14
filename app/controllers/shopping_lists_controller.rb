@@ -1,9 +1,10 @@
 class ShoppingListsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update] # This logic overrides line 6. Need to merge line 6 logic in this line.
+  before_action :authenticate_driver!, only: :index
+  before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
+  before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
+  before_action :find_shoppingList, only: [:update, :show]
 
-  before_action :find_shoppingList, only: [:show, :edit, :update]
-
-
- 
    def index
     @users = User.geocoded
     # @shopping_lists = ShoppingList.all
@@ -51,6 +52,17 @@ class ShoppingListsController < ApplicationController
   #This method returns ONLY ONE ShoppingList
   def show
   end
+
+  def destroy
+    @shopping_list.destroy
+    redirect_to  view_all_path(current_user)
+  end
+
+  def view_all
+    @shopping_lists = ShoppingList.where(user_id: 6)
+    # @shopping_lists = ShoppingList.where(user_id: current_user.id)
+  end
+
 
 
 private

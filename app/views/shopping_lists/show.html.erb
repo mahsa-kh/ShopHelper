@@ -1,58 +1,69 @@
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @items %>
-        <% n = 0 %>
-        <% @items.each do |item| %>
-        <tr>
-          <% n += 1 %>
-          <th scope="row"><%= n %></th>
-          <td><%= item.product_name %></td>
-          <td><%= item.quantity %></td>
-        </tr>
-        <% end %>
-      <% end %>
-  </tbody>
-</table>
 
 
-
-
-
-
-<% if current_driver %>
-  <p>Shopping note: </p>
-  <p><%= @shopping_list.notes %></p>
-  <%= @shopping_list.user.first_name %>
-  <%= @shopping_list.user.last_name %>
-  <%= @shopping_list.user.location %>
-  <!-- Here we need to add, user photo + map + other info? -->
-  <% if @shopping_list.status %>
-    <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-ghost" %>
-  <% else %>
-    <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
-  <% end %>
-<% elsif current_user %>
-  <%if !@shopping_list.notes %>
-    <div class="m-3">
-      <%= simple_form_for(@shopping_list, remote: true) do |shop| %>
-          <%= shop.input :notes %>
-        <%= shop.submit "Add a note" , class: "btn btn-ghost"  %>
-      <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class=".col-sm-12 col-md-6">
+      <div class="card-list">
+          <% if @items %>
+            <div class="card-title">Grocery List:</div>
+            <% @items.each do |item| %>
+            <div class="card-items">
+              <%= item.quantity %> x
+              <%= item.product_name %>
+            </div>
+            <% end %>
+          <% end %>
+      </div>
     </div>
-  <% end %>
+
+    <div class=".col-sm-12 col-md-6">
+      <div class="text-layer">
+        <% if current_driver %>
+          <div class="driver-text">
+            <h2>Shopping note: </h2>
+            <p><%= @shopping_list.notes %></p>
+            <p>
+              <%= @shopping_list.user.first_name %>
+              <%= @shopping_list.user.last_name %>
+              <%= @shopping_list.user.location %>
+            </p>
+            <!-- Here we need to add, user photo + map + other info? -->
+            <div class="driver-action-layer">
+              <% if @shopping_list.status %>
+                <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-ghost" %>
+              <% else %>
+                <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
+              <% end %>
+            </div>
+        </div>
+
+        <% elsif current_user %>
+          <div class="user-action-layer">
+            <div class="state">
+              <%if @shopping_list.status %>
+                <p>Pending....</p>
+              <% else %>
+                <p>On its way</p>
+              <% end %>
+            </div>
+
+          <%if !@shopping_list.notes %>
+            <div class="card-form">
+              <%= simple_form_for(@shopping_list, remote: true) do |shop| %>
+                  <%= shop.input :notes %>
+                <%= shop.submit "Add Note" , class: "card-btn"  %>
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  <%if @shopping_list.status %>
-    <p>Pending....</p>
-  <% else %>
-    <p>On its way</p>
-  <% end %>
-<% end %>
+
+
+
