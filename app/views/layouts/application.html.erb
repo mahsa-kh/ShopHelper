@@ -14,8 +14,11 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>
+      <%= render 'pages/footer' %>
+    </footer>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
   </body>
-  <footer>
-    <%= render 'pages/footer' %>
-  </footer>
 </html>
