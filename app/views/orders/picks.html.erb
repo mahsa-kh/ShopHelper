@@ -1,19 +1,39 @@
-Your Shopping Lists Orders:
 
-<!-- ADDING MAP WITH MARKS -- AND THE DISTANCE STILL MISSING ON THIS PAGE -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class=".col-sm-12 col-md-8">
+      <div class="card-holder">
 
-<% @orders.each do |order| %>
-<p>
+          <% @orders.each do |order| %>
+            <div class="card-sm">
+              <div class="text">
+                <%= order.user.first_name %> <br>
+              </div>
+                <!-- <%= order.user.location %> -->
+                <p> <%=  order.items.count %> items</p>
 
-  <p><%=  order.user.first_name %></p>
-  <p><%=  order.user.location %></p>
-  <p>Total items in the shopping list: <%=  order.items.count %></p>
-</p>
-<% if order.status %>
-  <%= link_to "Mark as Delivered!", order_delivered_path(order), method: :post, remote:true , class: "btn btn-ghost" %>
-<% else %>
-  <p class= "btn-ghost">This order is delivered</p>
-<% end %>
-  <%= link_to "View Shopping List Details!", shopping_list_path(order.shopping_list), class: "btn btn-ghost" %>
-  <% end %>
+              <div class="action-layer">
+                <% if order.status %>
+                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                  <i class="fas fa-truck picks-action"></i>
+                  <%end%> <br>
+                <% else %>
+                  <i class="far fa-check-circle picks-action"></i>
+                <% end %>
+                <%= link_to  shopping_list_path(order.shopping_list) do %>
+                  <i class="far fa-eye picks-action"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
 
+      </div>
+    </div>
+    <div class=".col-sm-12 col-md-4">
+      <div class="shopper-map">
+
+      </div>
+    </div>
+
+  </div>
+</div>

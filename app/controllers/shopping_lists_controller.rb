@@ -12,7 +12,8 @@ class ShoppingListsController < ApplicationController
   end
 
   def create
-    @shopping_list = ShoppingList.new(status: true, user: current_user)
+    # @shopping_list = ShoppingList.new(status: true, user: current_user)
+    @shopping_list = ShoppingList.new(status: true, user: User.find(6))
 
     if @shopping_list.save!
       redirect_to new_shopping_list_item_path(@shopping_list)
