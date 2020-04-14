@@ -2,6 +2,10 @@ class ShoppingListsController < ApplicationController
 
   before_action :find_shoppingList, only: [:show, :edit, :update]
 
+  def index
+    # @shopping_list = ShoppingList.all
+  end
+
   def new
     @shopping_list = ShoppingList.new
     @items = Item.new
@@ -28,6 +32,11 @@ class ShoppingListsController < ApplicationController
   #This method returns ONLY ONE ShoppingList
   def show
   end
+
+  def view_all
+    @shopping_lists = ShoppingList.where(user_id: current_user.id)
+  end
+
 
 
 private
