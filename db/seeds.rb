@@ -1,7 +1,7 @@
 require "faker"
 Item.destroy_all
-ShoppingList.destroy_all
 Order.destroy_all
+ShoppingList.destroy_all
 User.destroy_all
 Driver.destroy_all
 
