@@ -12,6 +12,11 @@
           <div class="notification-content">
             <p><small>Order Created at: <%=  list.created_at.time %> </small></p>
             <p>number of items in the shopping list: <%= list.items.count %></strong> </p>
+            <p>
+              <% if !list.status %>
+              <i class="far fa-check-circle"></i>
+            <% end %>
+            </p>
           </div>
 
           <div class="notification-actions">
