@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
  before_action :set_shopping_list, only: [:new, :create]
-
   def new
     @item = Item.new
     @shopping_list = ShoppingList.find(params[:shopping_list_id])
