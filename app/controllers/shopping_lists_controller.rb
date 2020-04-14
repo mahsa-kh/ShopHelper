@@ -32,6 +32,11 @@ class ShoppingListsController < ApplicationController
   def show
   end
 
+  def view_all
+    @shopping_lists = ShoppingList.where(user_id: current_user.id)
+  end
+
+
 
 private
 

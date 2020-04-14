@@ -1,0 +1,10 @@
+
+
+          <% @shopping_lists.each do |list| %>
+
+                <%= list.items.count %> <br>
+
+                <!-- <%= order.user.location %> -->
+                <p> <%=  list.created_at %> items</p>
+
+                <% end %>
