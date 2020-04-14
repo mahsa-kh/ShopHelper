@@ -1,6 +1,6 @@
 class ShoppingListsController < ApplicationController
 
-  before_action :find_shoppingList, only: [:show, :edit, :update]
+  before_action :find_shoppingList, only: [:show, :edit, :update, :destroy]
 
   def index
     # @shopping_list = ShoppingList.all
@@ -32,8 +32,14 @@ class ShoppingListsController < ApplicationController
   def show
   end
 
+  def destroy
+    @shopping_list.destroy
+    redirect_to  view_all_path(current_user)
+  end
+
   def view_all
-    @shopping_lists = ShoppingList.where(user_id: current_user.id)
+    @shopping_lists = ShoppingList.where(user_id: 6)
+    # @shopping_lists = ShoppingList.where(user_id: current_user.id)
   end
 
 

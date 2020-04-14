@@ -1,10 +1,31 @@
 
 
-          <% @shopping_lists.each do |list| %>
 
-                <%= list.items.count %> <br>
+  <div class="row justify-content-center">
+    <div class=".col-sm-12 col-md-3">
+    </div>
+    <div class=".col-sm-12 col-md-6">
+      <% @shopping_lists.each do |list| %>
+        <div class="notification">
 
-                <!-- <%= order.user.location %> -->
-                <p> <%=  list.created_at %> items</p>
+          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+          <div class="notification-content">
+            <p><small>Order Created at: <%=  list.created_at.time %> </small></p>
+            <p>number of items in the shopping list: <%= list.items.count %></strong> </p>
+          </div>
 
-                <% end %>
+          <div class="notification-actions">
+            <%= link_to shopping_list_path(list) do %>
+              View <i class="far fa-eye"></i>
+            <% end %>
+            <%= link_to shopping_list_path(list), method: :delete, remote: true do %>
+              Delete <i class="far fa-trash-alt"></i>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+      <div class=".col-sm-12 col-md-3">
+    </div>
+  </div>
