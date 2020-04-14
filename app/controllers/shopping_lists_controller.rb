@@ -45,8 +45,14 @@ class ShoppingListsController < ApplicationController
   def show
   end
 
+  def destroy
+    @shopping_list.destroy
+    redirect_to  view_all_path(current_user)
+  end
+
   def view_all
-    @shopping_lists = ShoppingList.where(user_id: current_user.id)
+    @shopping_lists = ShoppingList.where(user_id: 6)
+    # @shopping_lists = ShoppingList.where(user_id: current_user.id)
   end
 
 
