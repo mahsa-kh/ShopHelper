@@ -1,10 +1,11 @@
 class ShoppingListsController < ApplicationController
-
+  before_action :authenticate_user!, only: :show, unless: user_signed_in?
+  before_action :authenticate_driver!, only: :show, unless: driver_signed_in?
   before_action :find_shoppingList, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: :index
-  skip_before_action :authenticate_driver!, only: :index
+  skip_before_action :authenticate_driver!, only: [:index, :new, :update]
   def index
-    @shoppingList = ShoppingList.all
+    @shopping_list = ShoppingList.all
   end
 
   def new
