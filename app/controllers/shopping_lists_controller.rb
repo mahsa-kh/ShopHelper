@@ -1,16 +1,9 @@
 class ShoppingListsController < ApplicationController
-  before_action :authenticate_user!, only: :show, unless: user_signed_in?
-  before_action :authenticate_driver!, only: :show, unless: driver_signed_in?
-  before_action :find_shoppingList, only: [:show, :edit, :update]
-<<<<<<< HEAD
-  skip_before_action :authenticate_user!, only: :index
-  skip_before_action :authenticate_driver!, only: [:index, :new, :update]
-  def index
-    @shopping_list = ShoppingList.all
-=======
-
-
- 
+  before_action :authenticate_user!, only: [:new, :create, :update] # This logic overrides line 6. Need to merge line 6 logic in this line.
+  before_action :authenticate_driver!, only: :index
+  before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
+  # before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
+  before_action :find_shoppingList, only: [:update, :show]
    def index
     @users = User.geocoded
     @shopping_lists = ShoppingList.all
@@ -22,7 +15,6 @@ class ShoppingListsController < ApplicationController
         picture: helpers.asset_url("sb.png")
       }
     end
->>>>>>> master
   end
 
 
