@@ -1,3 +1,35 @@
+.card-shopping-list {
+	margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 3px; 
+  box-shadow: 0 0 10px 
+  rgba(0,0,0,0.2);
+
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 21px;
+  align-items: stretch;
+ }
+
+.card-click:hover {
+   text-decoration: none;
+}
 
 .card-empty {
   overflow: hidden;
@@ -66,14 +98,7 @@
 }
 
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  margin: 60px;
-  padding: 20px;
-  align-items: stretch;
-  space-between: 60px;
-}
+
 
 .card-add {
   align: center;
@@ -193,9 +218,6 @@
 }
 
 
-.card-click:hover {
-   text-decoration: none;
-}
 
 
 .picks-action {
