@@ -30,12 +30,13 @@
   left: 50px;
   color: linear-gradient(#167FFB, #0F60C4);
   font-color: linear-gradient(#167FFB, #0F60C4);
+
 }
 
 .card {
   align: center;
   overflow: hidden;
-  width: 400px;
+  width: 300px;
   height: 500px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -71,6 +72,15 @@
   margin-top: 16px;
 }
 
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 60px;
+  padding: 20px;
+  align-items: stretch;
+  space-between: 60px;
+}
 
 .card .card-form {
   margin:16px;
