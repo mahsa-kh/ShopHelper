@@ -29,7 +29,11 @@
         <div class="notification-show mt-5">
           <div class="notification-layer mt-5">
             <p><strong>
-                  <%= cl_image_tag current_driver.photo.key, class:"avatar" %>
+              <%if @shopping_list.user.photo.attached? %>
+                  <%= cl_image_tag @shopping_list.user.photo.key, class:"avatar" %>
+                  <%else%>
+                  <%= image_tag('avatar.png', class: "avatar") %>
+                  <%end%>
                   <%= @shopping_list.user.first_name %> <%= @shopping_list.user.last_name %>
             </strong></p>
           </div>
@@ -44,9 +48,9 @@
           </div>
           <div class="notification-layer1">
             <p>
-              <%= image_tag('map.png', class: "avatar") %>
-             <strong> Delivery point:</strong>
-             <small> <%= @shopping_list.user.location %></small>
+              <%= image_tag('pin.png', class: "avatar-sm mr-2") %>
+             <strong> Delivery point:</strong> <br>
+             <small class="ml-3"> <%= @shopping_list.user.location %></small>
             </p>
           </div>
         </div>
