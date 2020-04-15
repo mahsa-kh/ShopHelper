@@ -41,10 +41,10 @@ const initMapbox = () => {
     maximumAge: 0,
   });
 
+
+
   new mapboxgl.Marker()
-
-
- 
+   
       .setLngLat([ position1.coords.longitude, position1.coords.latitude ])
       .addTo(map)
       
