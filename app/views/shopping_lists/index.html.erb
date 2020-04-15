@@ -4,7 +4,7 @@
     <div class="col-12 col-md-6 col-lg-6">
 
       <div class = "row pt-3" >
-        <% @shopping_lists.each do |x|  %>
+        <% @shopping_lists.each do |shoppinglist|  %>
           <div class="col-12 col-md-6 col-lg-6">
             <%= link_to  shopping_list_path(shoppinglist), class: "card-click" do %> 
             <div class="card" style = "border-radius: 3px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
