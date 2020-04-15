@@ -3,14 +3,14 @@ class ShoppingListsController < ApplicationController
   before_action :authenticate_driver!, only: :index
   before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
   before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
-  before_action :find_shoppingList, only: [:update, :show]
+  before_action :find_shoppingList, only: [:update, :show, :destroy]
 
    def index
     @users = User.geocoded
     # @shopping_lists = ShoppingList.all
    @shopping_lists = []
-   
-   @users.each do |user| 
+
+   @users.each do |user|
    if user.shopping_list != nil
    @shopping_lists << user.shopping_list
    end
