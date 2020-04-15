@@ -21,15 +21,22 @@
 
             <div class="notification-actions">
               <%= link_to shopping_list_path(list) do %>
-                View <i class="far fa-eye"></i>
+                 <i class="far fa-eye"></i>
               <% end %>
               <%= link_to shopping_list_path(list), method: :delete, remote: true do %>
-                Delete <i class="far fa-trash-alt"></i>
+                 <i class="far fa-trash-alt"></i>
               <% end %>
             </div>
           </div>
           <% end %>
-
+          <div class="notification">
+              <div class="notification-content mt-5 mb-5">
+                <p> <small>Want to make a new shopping list?</small></p>
+              </div>
+              <div class="pl-3">
+                  <%= link_to "Create one!", new_shopping_list_path, class: "btn-gradient " %>
+              </div>
+          </div>
       <%else %>
         <div class="notification">
           <div class="notification-content mt-5 mb-5">

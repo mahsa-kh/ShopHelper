@@ -1,31 +1,53 @@
+
 <div class= "mx-3">
   <div class = "row">
 
-    <div class="col-12 col-md-6 col-lg-6">
+    <div class="col-12 col-md-6 col-lg-6 mt-5">
 
-      <div class = "row pt-3" >
-        <% @shopping_lists.each do |shoppinglist|  %>
-          <div class="col-12 col-md-6 col-lg-6">
-            <%= link_to  shopping_list_path(shoppinglist), class: "card-click" do %> 
-            <div class="card-shopping-list">
-              <div class="card-body">
-                <h5 class="card-title" > <%= shoppinglist.user.first_name %></h5>
-                
-                <div style = "display: flex; justify-content: space-between;">
-                  <p style="font-size: 0.75rem; margin-bottom: 0px">  <%=  shoppinglist.user.items.count %> items </p>
-                  <% if params[:lat] && params[:lng] %>
-                    <p style="font-size: 0.75rem; margin-bottom: 0px">  
-                    <i class="fas fa-location-arrow"></i> 
-                    <%=  shoppinglist.user.distance_to([params[:lat], params[:lng]]).round%> Km 
-                    </p>
-                  <% end %>
-                </div>
-              </div>
+
+
+
+
+<% @shopping_lists.each do |shoppinglist|  %>
+          <div class="notification mt-2 ml-3">
+          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+            <div class="notification-content">
+
+              <p>Order Created by:<strong>  <%= shoppinglist.user.first_name %></strong> </p>
+              <p><small>number of items in the shopping list: <%=  shoppinglist.items.count %></small></p>
+              <p>
+                <% if params[:lat] && params[:lng] %>
+                <i class="fas fa-location-arrow"></i>
+                <%=  shoppinglist.user.distance_to([params[:lat], params[:lng]]).round%> Km
+              <% end %>
+              </p>
             </div>
-            <% end %>
+
+            <div class="notification-actions">
+              <%= link_to  shopping_list_path(shoppinglist) do %>
+                 <i class="far fa-eye"></i>
+              <% end %>
+            </div>
           </div>
-        <% end %>
-      </div>
+
+
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
     <div class="col-12 col-md-6 col-lg-6">
