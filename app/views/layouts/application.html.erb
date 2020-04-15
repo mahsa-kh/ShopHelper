@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="homepage">
     <%= render 'pages/navbar' %>
     <%= yield %>
     <% if notice  %>
@@ -26,9 +26,9 @@
         <%= alert %>
       </div>
     <% end %>
-    <%= render 'pages/footer' %>
-
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <footer>
+      <%= render 'pages/footer' %>
+    </footer>
 
   </body>
 </html>

@@ -1,35 +1,41 @@
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class=".col-sm-12 col-md-8">
-      <div class="card-holder">
+  <div class="row justify-content-left mt-5">
+        <div class=".col-sm-12 col-md-6">
+      <% @orders.each do |order| %>
+        <div class="notification ml-5">
 
-          <% @orders.each do |order| %>
-            <div class="card-sm">
-              <div class="text">
-                <%= order.user.first_name %> <br>
+          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+          <div class="notification-content">
+            <p><small><%= order.user.first_name %>    - Distance: </small></p>
+            <p><strong><%=  order.items.count %> items</strong> </p>
+            <p> <div class="notification-actions-drv">
+              <% if !order.status %>
+                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                  <i class="far fa-check-circle"></i>
+                  <% end %>
+              <%end%>
               </div>
-                <!-- <%= order.user.location %> -->
-                <p> <%=  order.items.count %> items</p>
+            </p>
+          </div>
 
-              <div class="action-layer">
+          <div class="notification-actions-drv ">
                 <% if order.status %>
                   <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
-                  <i class="fas fa-truck picks-action"></i>
-                  <%end%> <br>
-                <% else %>
-                  <i class="far fa-check-circle picks-action"></i>
+                  <i class="fas fa-truck"></i>
+                  <%end%>
                 <% end %>
                 <%= link_to  shopping_list_path(order.shopping_list) do %>
-                  <i class="far fa-eye picks-action"></i>
+                  <i class="far fa-eye"></i>
                 <% end %>
-              </div>
-            </div>
-          <% end %>
+          </div>
+        </div>
 
-      </div>
+      <% end %>
     </div>
-    <div class=".col-sm-12 col-md-4">
+
+    </div>
+    <div class=".col-sm-12 col-md-6">
       <div class="shopper-map">
 
       </div>

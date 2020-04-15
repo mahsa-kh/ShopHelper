@@ -2,17 +2,27 @@
   <div class = "row">
 
     <div class="col-12 col-md-6 col-lg-6">
+
       <div class = "row pt-3" >
         <% @shopping_lists.each do |x|  %>
           <div class="col-12 col-md-6 col-lg-6">
+            <%= link_to  shopping_list_path(shoppinglist), class: "card-click" do %> 
             <div class="card" style = "border-radius: 3px; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
               <div class="card-body">
-                <h5 class="card-title"> Shopping List number <%= x.id %></h5>
-                <div class="btn">
-                  <%= link_to 'Show', shopping_list_path(x), :class => "btn btn-info" %>
+                <h5 class="card-title" > <%= shoppinglist.user.first_name %></h5>
+                
+                <div style = "display: flex; justify-content: space-between;">
+                  <p style="font-size: 0.75rem; margin-bottom: 0px">  <%=  shoppinglist.user.items.count %> items </p>
+                  <% if params[:lat] && params[:lng] %>
+                    <p style="font-size: 0.75rem; margin-bottom: 0px">  
+                    <i class="fas fa-location-arrow"></i> 
+                    <%=  shoppinglist.user.distance_to([params[:lat], params[:lng]]).round%> Km 
+                    </p>
+                  <% end %>
                 </div>
               </div>
             </div>
+            <% end %>
           </div>
         <% end %>
       </div>

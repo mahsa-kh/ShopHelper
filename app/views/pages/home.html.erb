@@ -10,25 +10,27 @@
   </div>
   <div class="container">
     <div class="cards">
-      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <div class="card-category" style="background-image: url(<%= asset_path 'user.jpg' %>)">
         <div class="content d-block">
-          <div style="font-size: 24px">Create your shopping list.</div>
+          <div style="font-size: 24px">Create your shopping list</div>
           <%= link_to "Want to publish a list? Sign up here", new_user_registration_path, class: "card-link" %>
         </div>
       </div>
 
-      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+      <div class="card-category" style="background-image: url(<%= asset_path 'driver.jpg' %>)">
         <div class="content d-block">
-          <div style="font-size: 24px">Let our drivers shop for you.</div>
+          <div style="font-size: 24px">Let our drivers shop for you</div>
           <%= link_to "Want to deliver? Sign up here", new_driver_registration_path, class: "card-link" %>
         </div>
       </div>
 
-      <div class="card-category col-12" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+      <div class="card-category" style="background-image: url(<%= asset_path 'deliver.jpg' %>)">
         <div class="content d-block">
-          <div style="font-size: 24px">The order is delivered at your door.</div>
+          <div style="font-size: 24px">The order is delivered at your door</div>
         </div>
       </div>
     </div>
   </div>
 </body>
+
+<!-- style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) -->

@@ -186,6 +186,11 @@
 }
 
 
+.card-click:hover {
+   text-decoration: none;
+}
+
+
 .picks-action {
   color: black;
   opacity: 0.15;
@@ -197,7 +202,5 @@
 .picks-action:hover {
   opacity: 1;
 }
-
-
 
 
