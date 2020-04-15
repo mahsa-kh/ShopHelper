@@ -1,14 +1,16 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class=".col-sm-12 col-md-4">
+    <div class=".col-sm-12 col-md-3">
+    </div>
+    <div class=".col-sm-12 col-md-1">
     </div>
     <div class=".col-sm-12 col-md-4 d-sm-inline-flex d-md-inline-flex">
-      <div class="card mt-5">
+      <div class="card-add mt-5 center">
 
-            <div class="card-title">Grocery List:</div>
+            <div class="card-title ml-4">Grocery List:</div>
             <% if @items %>
             <% @items.each do |i| %>
-            <div class="card-items">
+            <div class="card-items ml-5">
               <%= i.quantity %> x
               <%= i.product_name %>
             </div>
@@ -26,7 +28,9 @@
           </div>
         </div>
     </div>
-    <div class=".col-sm-12 col-md-4">
+    <div class=".col-sm-12 col-md-1">
+    </div>
+    <div class=".col-sm-12 col-md-3">
     </div>
   </div>
 </div>

@@ -4,10 +4,12 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+
 Bundler.require(*Rails.groups)
 
 module ShopHelper
   class Application < Rails::Application
+    config.serve_static_assets = true
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.generators do |generate|
       generate.assets false
