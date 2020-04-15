@@ -13,6 +13,14 @@ class OrdersController < ApplicationController
 
   def picks
     @orders = Order.where("driver_id = ?", params[:driver_id])
+
+    @markers = @orders.map do |order|
+      {
+        lat: order.user.latitude,
+        lng: order.user.longitude,
+        infoWindow: render_to_string(partial: "shopping_lists/info_window", locals: { user: order.user })
+      }
+    end
   end
 
   def create_order

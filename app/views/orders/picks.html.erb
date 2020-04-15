@@ -1,45 +1,50 @@
 
-<div class="container">
-  <div class="row justify-content-left mt-5">
-        <div class=".col-sm-12 col-md-6">
-      <% @orders.each do |order| %>
-        <div class="notification ml-5">
 
-          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
-          <div class="notification-content">
-            <p><small><%= order.user.first_name %>    - Distance: </small></p>
-            <p><strong><%=  order.items.count %> items</strong> </p>
-            <p> <div class="notification-actions-drv">
-              <% if !order.status %>
-                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
-                  <i class="far fa-check-circle"></i>
-                  <% end %>
-              <%end%>
-              </div>
-            </p>
-          </div>
-
-          <div class="notification-actions-drv ">
-                <% if order.status %>
-                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
-                  <i class="fas fa-truck"></i>
+<!-- RUDY -->
+<div class= "mx-3">
+  <div class = "row">
+    <div class="col-12 col-md-6 col-lg-6">
+      <div class = "row pt-3" >
+        <% @orders.each do |order| %>
+          <div class="col-12 col-md-6 col-lg-6">
+            <%= link_to  shopping_list_path(order.shopping_list), class: "card-click" do %>
+            <div class="card-shopping-list-picks">
+            <% end %>
+              <div class="card-body-picks">
+                <div class="d-flex justify-content-between">
+                  <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+                  <div style="margin-bottom: auto">
+                    <p><small><%= order.user.first_name %></small></p>
+                    <p><strong><%=  order.items.count %> items</strong> </p>
+                  </div>
+                </div>
+                <div style="padding-left: 7%">
+                  <% if !order.status %>
+                    <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                      <i class="far fa-check-circle"></i>
+                    <% end %>
                   <%end%>
-                <% end %>
-                <%= link_to  shopping_list_path(order.shopping_list) do %>
-                  <i class="far fa-eye"></i>
-                <% end %>
+                  <%= link_to  shopping_list_path(order.shopping_list) do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
+                  <% if order.status %>
+                    <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                      <i class="fas fa-truck"></i>
+                    <%end%>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-      <% end %>
-    </div>
-
-    </div>
-    <div class=".col-sm-12 col-md-6">
-      <div class="shopper-map">
-
+        <% end %>
       </div>
     </div>
-
+    <div class="col-12 col-md-6 col-lg-6">
+      <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="pk.eyJ1Ijoicm9kb2xmb3AiLCJhIjoiY2s4MDl6cG9sMGNnaDNkcGcyaml4YXJ1MCJ9.fTw_XIDzAzHw5clxchO04A"
+      ></div>
+    </div>
   </div>
 </div>

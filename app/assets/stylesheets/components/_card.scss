@@ -1,10 +1,33 @@
-
-.card {
-	margin-bottom: 16px;
+.card-shopping-list {
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 3px;
+  box-shadow: 0 0 10px
+  rgba(0,0,0,0.2);
 }
-
+.card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 21px;
+  align-items: stretch;
+ }
+.card-click:hover {
+   text-decoration: none;
+}
 .card-big {
-
 }
 .card-empty {
   overflow: hidden;
@@ -18,7 +41,6 @@
   justify-content: space-between;
   position: relative;
 }
-
 .card-empty .card-btn-empty {
   background: white;
   box-shadow: 0 0 15px rgba(82,45,91,0.2);
@@ -30,9 +52,7 @@
   left: 50px;
   color: linear-gradient(#167FFB, #0F60C4);
   font-color: linear-gradient(#167FFB, #0F60C4);
-
 }
-
 .card {
   align: center;
   overflow: hidden;
@@ -46,7 +66,6 @@
   justify-content: space-between;
   position: relative;
 }
-
 .card-list {
   overflow: hidden;
   width: 500px;
@@ -57,7 +76,6 @@
   margin-top: 28px;
   margin-bottom: 28px;
 }
-
   .card-items {
   // flex: 1 0 auto;
   margin-top: 2px;
@@ -65,23 +83,11 @@
   margin-left: 24px;
   font-size: 12px;
 }
-
 .card-title {
   font-size: 22px;
   margin-left: 16px;
   margin-top: 16px;
 }
-
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  margin: 60px;
-  padding: 20px;
-  align-items: stretch;
-  space-between: 60px;
-}
-
 .card .card-form {
   margin:16px;
   flex: 1 1 auto;
@@ -91,9 +97,7 @@
   justify-content: space-between;
   position: relative;
 }
-
 .col1 {
-
     font-size: 10px;
     text-align: left;
     border-radius: 4px;
@@ -103,49 +107,38 @@
     flex: 1 1 auto;
     font-size: 10px;
     opacity: 0.7;
-
     border-radius: 4px;
 }
-
-
-
 .card .btn-layer {
   margin-top: 16px;
   margin-bottom: 16px;
   align-self: center;
 }
-
 .text-layer {
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: space-between;
 }
-
 .text-layer .driver-text h2 {
   margin-top: 100px;
   margin-left: 24px;
 }
-
 .text-layer .driver-text p {
   margin-left: 24px;
     opacity: .7;
 }
-
 .text-layer .driver-action-layer {
   align-self: center;
 }
-
 .text-layer .user-action-layer {
   margin-top: 100px;
   margin-left: 24px;
 }
-
 .card-holder {
   display: flex;
   flex-wrap: wrap;
 }
-
 .card-holder .card-sm {
   overflow: hidden;
   background: white;
@@ -158,14 +151,12 @@
   margin-left:20px;
   margin-right:20px;
 }
-
 .card-sm .text{
   margin-left: 12px;
   margin-top: 8px;
   font-size: 24px;
   color: #222831;
 }
-
 .card-sm p {
   margin-left: 8px;
   font-size: 14px;
@@ -174,7 +165,6 @@
   bottom: -10px;
   left: 8px;
 }
-
 .action-layer {
   display: flex;
   flex-direction: row;
@@ -184,13 +174,6 @@
   bottom: -20px;
   right: 2px;
 }
-
-
-.card-click:hover {
-   text-decoration: none;
-}
-
-
 .picks-action {
   color: black;
   opacity: 0.15;
@@ -202,5 +185,27 @@
 .picks-action:hover {
   opacity: 1;
 }
-
-
+.card-shopping-list-picks {
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  align: center;
+  width: 200px;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  // position: relative;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.card-body-picks {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 16px;
+  align-items: stretch;
+ }
