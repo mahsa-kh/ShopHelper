@@ -18,16 +18,15 @@ class ShoppingListsController < ApplicationController
    @shopping_lists = []
 
    @users.each do |user|
-   if user.shopping_list != nil
-   @shopping_lists << user.shopping_list
+     if user.shopping_list != nil && user.shopping_list.status != false
+       @shopping_lists << user.shopping_list
+     end
    end
-      end
-
-    @markers = @users.map do |user|
+    @markers = @shopping_lists.map do |shopping_list|
       {
-        lat: user.latitude,
-        lng: user.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { user: user }),
+        lat: shopping_list.user.latitude,
+        lng: shopping_list.user.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { user: shopping_list.user }),
         picture: helpers.asset_url("sb.png")
       }
     end
