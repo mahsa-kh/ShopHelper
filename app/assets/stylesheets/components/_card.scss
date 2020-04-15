@@ -1,4 +1,3 @@
-
 .card-shopping-list {
 	margin-bottom: 16px;
   margin-left: auto;
@@ -31,14 +30,6 @@
 .card-click:hover {
    text-decoration: none;
 }
-
-
-
-
-.card-big {
-
-}
-
 
 .card-empty {
   overflow: hidden;
@@ -109,7 +100,21 @@
 
 
 
-.card .card-form {
+.card-add {
+  align: center;
+  overflow: hidden;
+  width: 400px;
+  height: 500px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-add .card-form {
   margin:16px;
   flex: 1 1 auto;
   display: flex;
@@ -136,7 +141,7 @@
 
 
 
-.card .btn-layer {
+.card-add .btn-layer {
   margin-top: 16px;
   margin-bottom: 16px;
   align-self: center;

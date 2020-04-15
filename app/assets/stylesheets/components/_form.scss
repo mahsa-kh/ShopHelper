@@ -9,6 +9,32 @@
   text-align: left;
 }
 
+// #shopping_list_notes {
+//   background: #F8F8F8;
+//   border-radius: 6px;
+//   border: 0.5px solid rgb(220, 220, 220);
+//   margin-left: 40px;
+//   padding: 4px 15px;
+//   font-size: 9px;
+//   text-align: left;
+//   height: 70px;
+// }
+
+#shopping_list_notes {
+  background: #F8F8F8;
+  border-radius: 6px;
+  border: 0.5px solid rgb(220, 220, 220);
+  margin-left: 5px;
+  padding: 4px 15px;
+  font-size: 12px;
+  text-align: left;
+  height: 70px;
+}
+
+#shopping_list_notes::placeholder {
+  font-size: 12px;
+  opacity: 0.8;
+}
 
 #item_product_name {
   background: #F8F8F8;
@@ -44,6 +70,8 @@
   width: 30px;
 
 }
+
+
 
 .simple_form {
   div.input {

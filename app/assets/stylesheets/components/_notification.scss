@@ -7,6 +7,8 @@
   border: 1px solid rgb(235,235,235);
 }
 
+
+
 .notification .notification-content {
   flex-grow: 1;
   padding: 0 24px;
@@ -41,6 +43,71 @@
   color: #555555;
 }
 
+
+
+.notification-show {
+  display: flex;
+  height: 300px;
+  width: 350px;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  flex-direction: column;
+}
+
+
+.notification-show .notification-layer {
+  flex: 1 0 auto;
+  align-self: flex-start;
+  padding: 0 16px;
+}
+
+.notification-show .notification-layer1{
+  flex: 1 0 auto;
+  align-self: flex-start;
+  padding: 0 10px;
+
+}
+
+.notification-layer p {
+  margin: 0;
+  line-height: 1.4;
+  font-weight: lighter;
+}
+
+.notification-layer small {
+  color: #999999;
+  font-weight: bold;
+}
+
+
+.notification-list {
+  display: flex;
+  height: 500px;
+  width: 350px;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  flex-direction: column;
+}
+
+.notification-list .notification-layer {
+  align-self: flex-start;
+  height: 15px;
+  padding: 0 16px;
+}
+
+.notification-layer .form_txtarea {
+  align:left;
+  padding: 0;
+  margin: 0;
+  width: 250px;
+  height: 240px;
+}
 
 .avatar {
   width: 40px;
