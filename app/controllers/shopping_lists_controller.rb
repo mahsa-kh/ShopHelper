@@ -65,8 +65,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def view_all
-    @shopping_lists = ShoppingList.where(user_id: 6)
-    # @shopping_lists = ShoppingList.where(user_id: current_user.id)
+    @shopping_lists = ShoppingList.where(user_id: current_user.id)
   end
 
 
