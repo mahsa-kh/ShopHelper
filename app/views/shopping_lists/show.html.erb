@@ -5,7 +5,7 @@
     </div>
       <div class=".col-sm-12 col-md-4">
           <div class="notification-list mt-5">
-            <div class="notification-layer mt-5">
+            <div class="notification-layer mt-5 mb-4">
               <strong>Grocery List:</strong>
             </div>
             <% if @items %>
@@ -71,16 +71,22 @@
             <!-- 2.1) IF NOT DELIVERED: -->
             <%if @shopping_list.status %>
             <p><strong>
-                  Wait until someone helps you ...
+                  Wait until someone helps you ... <br>
+                  <small>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
+                  </small>
             </strong></p>
             <!-- 2.2) IF  DELIVERED: -->
             <% else %>
             <p><strong>
-                 <%= @shopping_list.driver.first_name %> is helping you...
+                 <%= @shopping_list.driver.first_name %> is helping you... <br>
+                <small>
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </small>
             </strong></p>
             <% end %>
           </div>
-          <div class="notification-layer">
+          <div class="notification-layer mt-3">
             <%if !@shopping_list.notes %>
                 <%= simple_form_for(@shopping_list, remote: true) do |shop| %>
                   <%= shop.input_field :notes, class: "form_txtarea", placeholder: 'Write your note here....'  %>
@@ -88,9 +94,10 @@
                 <% end %>
             <% end %>
               <%if @shopping_list.notes %>
-              <p>  <small> Your Notes:  <%= @shopping_list.notes %> </small>
-              <%end%>
+              <p> <strong>Your Notes: </strong> <br>
+                   <small> <%= @shopping_list.notes %> </small>
               </p>
+              <%end%>
           </div>
         </div>
       <%end%>

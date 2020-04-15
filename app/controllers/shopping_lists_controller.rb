@@ -1,7 +1,7 @@
 class ShoppingListsController < ApplicationController
   before_action :find_shoppingList, only: [:update, :show, :destroy]
   before_action do |controller|
-    if ['new', 'create', 'update'].include? controller.action_name 
+    if ['new', 'create', 'update'].include? controller.action_name
       authenticate_user!
     elsif controller.action_name == 'show'
       if !user_signed_in? && !driver_signed_in?
@@ -51,7 +51,7 @@ class ShoppingListsController < ApplicationController
 
 
   def update
-    @shopping_list.update(notes: form_params)
+    @shopping_list.update(form_params)
     redirect_to shopping_list_path(@shopping_list)
   end
 
