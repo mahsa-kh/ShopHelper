@@ -4,7 +4,7 @@ class ShoppingListsController < ApplicationController
     if ['new', 'create', 'update'].include? controller.action_name 
       authenticate_user!
     elsif controller.action_name == 'show'
-      if !user_signed_in? || !driver_signed_in?
+      if !user_signed_in? && !driver_signed_in?
         authenticate_user!
       end
     elsif controller.action_name == 'index'
