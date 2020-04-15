@@ -96,12 +96,16 @@
                   <%= shop.submit "Add" , class: "btn-gradient " ,style: "margin-left: 13px"  %>
                 <% end %>
             <% end %>
+            <div class="mt-1">
+             <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
+            </div>
               <%if @shopping_list.notes %>
               <p> <strong>Your Notes: </strong> <br>
                    <small> <%= @shopping_list.notes %> </small>
               </p>
               <%end%>
           </div>
+
         </div>
       <%end%>
     </div>
