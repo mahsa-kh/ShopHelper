@@ -47,8 +47,8 @@
 
 .notification-show {
   display: flex;
-  height: 350px;
-  width: 400px;
+  height: 300px;
+  width: 350px;
   align-items: center;
   margin-bottom: 8px;
   background: white;
@@ -61,7 +61,14 @@
 .notification-show .notification-layer {
   flex: 1 0 auto;
   align-self: flex-start;
-  padding: 0 24px;
+  padding: 0 16px;
+}
+
+.notification-show .notification-layer1{
+  flex: 1 0 auto;
+  align-self: flex-start;
+  padding: 0 10px;
+
 }
 
 .notification-layer p {
@@ -76,7 +83,23 @@
 }
 
 
+.notification-list {
+  display: flex;
+  height: 500px;
+  width: 350px;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  flex-direction: column;
+}
 
+.notification-list .notification-layer {
+  align-self: flex-start;
+  height: 15px;
+  padding: 0 16px;
+}
 
 .avatar {
   width: 40px;
