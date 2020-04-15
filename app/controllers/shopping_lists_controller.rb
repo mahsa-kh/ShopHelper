@@ -1,9 +1,16 @@
 class ShoppingListsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update] # This logic overrides line 6. Need to merge line 6 logic in this line.
-  before_action :authenticate_driver!, only: :index
-  before_action :authenticate_driver!, only: :show, unless: :user_signed_in?
-  before_action :authenticate_user!, only: :show, unless: :driver_signed_in?
   before_action :find_shoppingList, only: [:update, :show, :destroy]
+  before_action do |controller|
+    if ['new', 'create', 'update'].include? controller.action_name 
+      authenticate_user!
+    elsif controller.action_name == 'show'
+      if !user_signed_in? || !driver_signed_in?
+        authenticate_user!
+      end
+    elsif controller.action_name == 'index'
+      authenticate_driver!
+    end
+  end
 
    def index
     @users = User.geocoded
