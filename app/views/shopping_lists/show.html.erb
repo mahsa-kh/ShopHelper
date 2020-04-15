@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center ">
     <div class=".col-sm-12 col-md-6">
       <div class="card-list">
           <% if @items %>
@@ -14,26 +14,63 @@
       </div>
     </div>
 
-    <div class=".col-sm-12 col-md-6">
-      <div class="text-layer">
+    <div class=".col-sm-12 col-md-4">
+
+
+
+
+
+
+
+
+
+<!-- 1) IF DRIVER: -->
+
         <% if current_driver %>
-          <div class="driver-text">
-            <h2>Shopping note: </h2>
-            <p><%= @shopping_list.notes %></p>
-            <p>
-              <%= @shopping_list.user.first_name %>
-              <%= @shopping_list.user.last_name %>
-              <%= @shopping_list.user.location %>
-            </p>
-            <!-- Here we need to add, user photo + map + other info? -->
-            <div class="driver-action-layer">
-              <% if @shopping_list.status %>
-                <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-ghost" %>
-              <% else %>
-                <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-ghost" %>
-              <% end %>
-            </div>
-        </div>
+
+<div class="notification-show mt-5">
+
+  <div class="notification-layer">
+    <%= cl_image_path current_user.photo.key, height: 400, width: 400, crop: :fill, class:"avatar-large" %>
+    <p><strong><%= @shopping_list.user.first_name %> <%= @shopping_list.user.last_name %></strong></p> <br>
+  </div>
+  <div class="notification-layer">
+    <p>Note from <%= @shopping_list.user.first_name %>:<small>
+      <%if @shopping_list.notes%>
+        <%= @shopping_list.notes %>
+      <%else%>
+      No notes...! Thanks for your help!
+      <%end%>
+      </small></p> <br>
+    </div>
+    <div class="notification-layer">
+    <p>
+      <%= image_tag('pin.jpg', class: "avatar-large") %>
+      Delivery point: <strong><%= @shopping_list.user.location %></strong>
+    </p>
+  </div>
+  </div>
+</div>
+<!-- 1.1) IF RESQUEST IS NOT DELIVERED: -->
+<% if @shopping_list.status %>
+<div class="pl-5">
+    <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn btn-blue" %>
+</div>
+<!-- 1.2) IF RESQUEST IS DELIVERED: -->
+    <% else %>
+       <%= link_to "<< Back", picks_path(@shopping_list.order), class: "btn btn-blue" %>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
 
         <% elsif current_user %>
           <div class="user-action-layer">
@@ -56,6 +93,8 @@
           </div>
         <% end %>
       </div>
+    </div>
+    <div class=".col-sm-12 col-md-2">
     </div>
   </div>
 </div>
