@@ -21,12 +21,16 @@
 
           <div class="notification-actions-drv ">
                 <% if order.status %>
-                  <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
-                  <i class="fas fa-truck"></i>
-                  <%end%>
-                <% end %>
-                <%= link_to  shopping_list_path(order.shopping_list) do %>
-                  <i class="far fa-eye"></i>
+                    <%= link_to order_delivered_path(order), method: :post, remote:true  do %>
+                      <i class="fas fa-truck"></i>
+                    <%end%>
+                    <%= link_to  shopping_list_path(order.shopping_list) do %>
+                      <i class="far fa-eye"></i>
+                    <% end %>
+                <% else %>
+                  <%= link_to  shopping_list_path(order.shopping_list) do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
                 <% end %>
           </div>
         </div>

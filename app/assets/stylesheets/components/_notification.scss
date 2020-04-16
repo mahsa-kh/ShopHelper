@@ -24,7 +24,7 @@
   font-weight: bold;
 }
 .notification .notification-actions {
-  opacity: 0;
+  opacity: 1;
   display: flex;
   transition: ease .3s;
 }
@@ -34,13 +34,14 @@
 }
 
 .notification .notification-actions a {
-  color: #999999;
+  color: black;
   margin-left: 16px;
   font-size: 14px;
 }
 
 .notification .notification-actions a:hover {
-  color: #555555;
+  color: #2780F5;
+  text-decoration: none;
 }
 
 
@@ -173,8 +174,13 @@
   opacity: 1;
   display: flex;
   transition: ease .3s;
-  color: #999999;
+  color: black;
 }
+.notification .notification-actions-drv a:hover {
+  color: #2780F5;
+  text-decoration: none;
+}
+
 
 .bl {
   color:#2780F5;
