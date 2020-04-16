@@ -1,36 +1,39 @@
 <body class="homepage">
   <div class="banner">
     <%= image_tag('landing-photo.jpg', class: "landing-photo") %>
+    <div class="value-proposition">
+      <h2>Stay home.</h2>
+      <h2>Someone will shop for you.</h2>
+      <br>
+      <%= link_to "Post your shopping list", new_shopping_list_path, class: "btn btn-blue" %>
+    </div>
   </div>
-  <div class="value-proposition">
-    <h2>Stay home.</h2>
-    <h2>Someone will shop for you.</h2>
-    <br>
-    <%= link_to "Post your shopping list", new_shopping_list_path, class: "btn btn-blue" %>
-  </div>
-  <div class="container">
+  <div class="container" style="height: 100vh">
+    <div class="caption" style="font-size: 1.3rem">
+      <p style="font-weight: lighter;">ShopHelper gives <span style="font-weight: bold">people in need</span> the opportunity to <span style="font-weight: bold">connect with volunteers</span> through our simple and effective platform.
+      After registration, users can immediately <span style="font-weight: bold">post their desired shopping list</span>. The shopping lists are picked up by our drivers,
+      who shop on their behalf and <span style="font-weight: bold">deliver the goods directly to their home</span>.</p>
+    </div>
     <div class="cards">
-      <div class="card-category" style="background-image: url(<%= asset_path 'user.jpg' %>)">
+      <div class="card-category" style="background-image: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= asset_path 'user.jpg' %>)">
         <div class="content d-block">
           <div style="font-size: 24px">Create your shopping list</div>
           <%= link_to "Want to publish a list? Sign up here", new_user_registration_path, class: "card-link" %>
         </div>
       </div>
 
-      <div class="card-category" style="background-image: url(<%= asset_path 'driver.jpg' %>)">
+      <div class="card-category" style="background-image: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= asset_path 'driver.jpg' %>)">
         <div class="content d-block">
           <div style="font-size: 24px">Let our drivers shop for you</div>
           <%= link_to "Want to deliver? Sign up here", new_driver_registration_path, class: "card-link" %>
         </div>
       </div>
 
-      <div class="card-category" style="background-image: url(<%= asset_path 'deliver.jpg' %>)">
+      <div class="card-category" style="background-image: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= asset_path 'deliver.jpg' %>)">
         <div class="content d-block">
-          <div style="font-size: 24px">The order is delivered at your door</div>
+          <div style="font-size: 24px">We deliver your order</div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
-<!-- style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)) -->
