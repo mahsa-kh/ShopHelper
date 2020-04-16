@@ -51,24 +51,56 @@
   width: 350px;
   align-items: center;
   margin-bottom: 8px;
-  background: white;
   padding: 8px 16px;
-  border: 1px solid rgb(235,235,235);
   flex-direction: column;
+  position: relative;
 }
 
+.delivery-layer {
+  position: absolute;
+  right: 40px;
+  top: 60px;
+  font-size: 12px;
 
+}
 .notification-show .notification-layer {
   flex: 1 0 auto;
   align-self: flex-start;
-  padding: 0 16px;
+
 }
 
 .notification-show .notification-layer1{
   flex: 1 0 auto;
   align-self: flex-start;
-  padding: 0 10px;
+  position: absolute;
+  top: 30px;
+  left: 70px;
+    small {
+    color: #999999;
+    font-weight: bold;
+  }
+  p {
+    margin: 0;
+    line-height: 1.4;
+    font-weight: lighter;
+  }
+}
 
+.notification-show .notification-layer2{
+  flex: 1 0 auto;
+  align-self: flex-start;
+  position: absolute;
+  top: 150px;
+  left: 70px;
+    small {
+    color: #999999;
+    font-weight: bold;
+  }
+  p {
+    margin: 0;
+    line-height: 1.4;
+    font-weight: lighter;
+  }
 }
 
 .notification-layer p {
@@ -101,6 +133,10 @@
   padding: 0 16px;
 }
 
+.note-pos {
+  position: absolute;
+  bottom: 90px;
+}
 .notification-layer .form_txtarea {
   align:left;
   padding: 0;
@@ -138,4 +174,8 @@
   display: flex;
   transition: ease .3s;
   color: #999999;
+}
+
+.bl {
+  color:#2780F5;
 }
