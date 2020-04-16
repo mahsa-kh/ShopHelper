@@ -48,7 +48,6 @@
           </div>
           <div class="notification-layer1">
             <p>
-              <%= image_tag('pin.png', class: "avatar-sm mr-2") %>
              <strong> Delivery point:</strong> <br>
              <small class="ml-3"> <%= @shopping_list.user.location %></small>
             </p>
@@ -77,7 +76,7 @@
             <p><strong>
                   Wait until someone helps you ... <br>
                   <small>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..
+                    Looks like people is quite busy at this moment, please be patient, a driver will accept your grocery list very soon. 
                   </small>
             </strong></p>
             <!-- 2.2) IF  DELIVERED: -->
@@ -85,7 +84,7 @@
             <p><strong>
                  <%= @shopping_list.driver.first_name %> is helping you... <br>
                 <small>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                 The driver could contact you during the day, please keep your phone close. 
                 </small>
             </strong></p>
             <% end %>
@@ -97,12 +96,16 @@
                   <%= shop.submit "Add" , class: "btn-gradient " ,style: "margin-left: 13px"  %>
                 <% end %>
             <% end %>
+            <div class="mt-1">
+             <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
+            </div>
               <%if @shopping_list.notes %>
               <p> <strong>Your Notes: </strong> <br>
                    <small> <%= @shopping_list.notes %> </small>
               </p>
               <%end%>
           </div>
+
         </div>
       <%end%>
     </div>

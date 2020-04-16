@@ -1,5 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
+  <% home_link = root_path %>
+  <% home_link = new_shopping_list_path if user_signed_in? && !current_user.shopping_list %>
+  <% home_link = shopping_list_path(current_user.shopping_list) if user_signed_in? && current_user.shopping_list %>
+  <% home_link = shopping_lists_path if driver_signed_in? %>
+
+  <%= link_to home_link, class: "navbar-brand" do %>
     <%= image_tag("ShopHelper.png") %>
   <% end %>
 
@@ -27,7 +32,7 @@
         </li>
       <% elsif driver_signed_in? %>
         <li class="nav-item">
-          <%= link_to "My Shopping Lists", shopping_lists_path, class: "nav-link" %>
+          <%= link_to "My Shopping Lists", picks_path(current_driver), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_driver.photo.attached? %>
