@@ -13,8 +13,8 @@
   align-items: left;
   justify-content: space-between;
   position: relative;
-  border-radius: 3px; 
-  box-shadow: 0 0 10px 
+  border-radius: 3px;
+  box-shadow: 0 0 10px
   rgba(0,0,0,0.2);
 
 }
@@ -232,4 +232,8 @@
   opacity: 1;
 }
 
-
+.msg {
+  margin-left: 30px;
+  font-size: 13px;
+  color: rgba(0,0,0,0.3);
+}
