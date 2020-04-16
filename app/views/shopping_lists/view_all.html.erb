@@ -9,7 +9,7 @@
       <%if !@shopping_lists.empty? %>
         <% @shopping_lists.each do |list| %>
           <div class="notification">
-          <%= image_tag('cart-color.jpg', class: "avatar-large") %>
+          <%= image_tag('Cart3.png', class: "cart-large") %>
             <div class="notification-content">
               <p><small>Order Created at: <%=  list.created_at.time %> </small></p>
               <p>number of items in the shopping list: <%= list.items.count %></strong> </p>

@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl"
-import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { getCurrentPosition } from '@bouzuya/get-current-position';
 
 const initMapbox = () => {
@@ -18,7 +18,7 @@ const initMapbox = () => {
   	  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
       const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/rodolfop/ck92sn75k2gw51imqq8xjgv2s'
       });
     
       const markers = JSON.parse(mapElement.dataset.markers)
@@ -31,7 +31,8 @@ const initMapbox = () => {
 		    customizedMarker.style.backgroundSize = 'contain';
 		    customizedMarker.style.width = '25px';
 		    customizedMarker.style.height = '25px';
-    	  new mapboxgl.Marker()
+        customizedMarker.style.border = '1px';
+     	  new mapboxgl.Marker(customizedMarker)
     	  .setLngLat([ marker.lng, marker.lat ])
     	  .setPopup(popup)
     	  .addTo(map)
@@ -74,7 +75,7 @@ const initMapbox = () => {
 
     console.log(markers)
     fitMapToMarkers(map, markers)
-  //   map.addControl(new MapBoxGeocoder({
+  //   map.addControl(new MapboxGeocoder({
   //     accessToken: mapboxgl.accessToken,
   //     mapboxgl: mapboxgl
   // }))
