@@ -57,12 +57,13 @@
           <!-- 1.1) IF RESQUEST IS NOT DELIVERED: -->
           <% if @shopping_list.status %>
             <div class="pl-3">
-              <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn-gradient " %>
-            </div>
+              <%= link_to "Delivery pending... Back!", picks_path(current_driver), class: "btn-gradient " %>
+
+             </div>
           <!-- 1.2) IF RESQUEST IS DELIVERED: -->
           <% else %>
             <div class="pl-3">
-              <%= link_to "You've delivered this order. Back!", picks_path(@shopping_list.order), class: "btn-gradient " %>
+              <%= link_to "You've delivered this order. Back!", picks_path(current_driver), class: "btn-gradient " %>
               </div>
           <% end %>
 
@@ -71,12 +72,13 @@
     <% elsif current_user %>
        <div class="notification-show mt-5">
           <div class="notification-layer mt-5">
+            <p><strong> Your shopping list has been posted!</strong></p>
             <!-- 2.1) IF NOT DELIVERED: -->
             <%if @shopping_list.status %>
             <p><strong>
                   Wait until someone helps you ... <br>
                   <small>
-                    Looks like people is quite busy at this moment, please be patient, a driver will accept your grocery list very soon. 
+                    Looks like people is quite busy at this moment, please be patient, a driver will accept your grocery list very soon.
                   </small>
             </strong></p>
             <!-- 2.2) IF  DELIVERED: -->
@@ -84,7 +86,7 @@
             <p><strong>
                  <%= @shopping_list.driver.first_name %> is helping you... <br>
                 <small>
-                 The driver could contact you during the day, please keep your phone close. 
+                 The driver could contact you during the day, please keep your phone close.
                 </small>
             </strong></p>
             <% end %>
@@ -96,14 +98,14 @@
                   <%= shop.submit "Add" , class: "btn-gradient " ,style: "margin-left: 13px"  %>
                 <% end %>
             <% end %>
-            <div class="mt-1">
-             <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
-            </div>
               <%if @shopping_list.notes %>
-              <p> <strong>Your Notes: </strong> <br>
-                   <small> <%= @shopping_list.notes %> </small>
-              </p>
+                <p> <strong>Your Note: </strong> <br>
+                     <small> <%= @shopping_list.notes %> </small>
+                </p>
               <%end%>
+              <div class="mt-1">
+                <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
+              </div>
           </div>
 
         </div>

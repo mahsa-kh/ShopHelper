@@ -36,6 +36,7 @@ class ShoppingListsController < ApplicationController
   def new
     @shopping_list = ShoppingList.new
     @items = Item.new
+    create
   end
 
   def create
