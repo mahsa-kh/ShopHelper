@@ -31,7 +31,8 @@ const initMapbox = () => {
 		    customizedMarker.style.backgroundSize = 'contain';
 		    customizedMarker.style.width = '25px';
 		    customizedMarker.style.height = '25px';
-    	  new mapboxgl.Marker()
+        customizedMarker.style.border = '1px';
+     	  new mapboxgl.Marker(customizedMarker)
     	  .setLngLat([ marker.lng, marker.lat ])
     	  .setPopup(popup)
     	  .addTo(map)
