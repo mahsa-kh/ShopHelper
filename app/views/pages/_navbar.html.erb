@@ -15,9 +15,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" style="color: #2780F5">
       <% if user_signed_in? %>
-        <li class="nav-item">
-
-          <%= link_to "Your Shopping Lists", view_all_path(current_user), class: "nav-link" %>
+        <li class="nav-item d-flex">
+          <%= link_to "Create Shopping List", new_shopping_list_path(current_user), class: "nav-link" %>
+          <%= link_to "My Shopping Lists", view_all_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
@@ -32,7 +32,7 @@
         </li>
       <% elsif driver_signed_in? %>
         <li class="nav-item">
-          <%= link_to "My Shopping Lists", picks_path(current_driver), class: "nav-link" %>
+          <%= link_to "My Picks", picks_path(current_driver), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_driver.photo.attached? %>
