@@ -15,3 +15,24 @@
 .nav-item {
   padding-top: 15px;
 }
+
+.border-driver {
+  color: white;
+  border: 2px solid #D6019E;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: 200ms;
+
+  &:hover {
+    color: white;
+    background: #2780F5;
+    text-decoration: none;
+    border: 2px solid #2780F5;
+
+  }
+}
+
+#navbarDropdown{
+  color: white;
+  margin-right: 12px;
+}
