@@ -57,7 +57,7 @@
           <!-- 1.1) IF RESQUEST IS NOT DELIVERED: -->
           <% if @shopping_list.status %>
             <div class="pl-3">
-              <%= link_to "Delivery pending... Back!", picks_path(current_driver), class: "btn-gradient " %>
+              <%= link_to "Help this user", create_order_path(@shopping_list), class: "btn-gradient " %>
 
              </div>
           <!-- 1.2) IF RESQUEST IS DELIVERED: -->
