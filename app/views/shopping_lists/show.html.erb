@@ -1,8 +1,12 @@
+
 <div class="container">
   <div class="row justify-content-center ">
 
     <div class=".col-sm-12 col-md-2">
     </div>
+<!-- 1) IF DRIVER: -->
+
+    <% if current_driver %>
       <div class=".col-sm-12 col-md-4">
           <div class="notification-list mt-5">
             <div class="notification-layer mt-5 mb-4">
@@ -22,69 +26,101 @@
     </div>
 
     <div class=".col-sm-12 col-md-4">
-<!-- 1) IF DRIVER: -->
+      <div class="notification-show mt-5">
 
-      <% if current_driver %>
-
-        <div class="notification-show mt-5">
-          <div class="notification-layer mt-5">
-            <p><strong>
-              <%if @shopping_list.user.photo.attached? %>
-                  <%= cl_image_tag @shopping_list.user.photo.key, class:"avatar" %>
-                  <%else%>
-                  <%= image_tag('avatar.png', class: "avatar") %>
-                  <%end%>
-                  <%= @shopping_list.user.first_name %> <%= @shopping_list.user.last_name %>
-            </strong></p>
-          </div>
-          <div class="notification-layer">
-            <p><strong>Note from <%= @shopping_list.user.first_name %>:</strong><br>
-              <%if @shopping_list.notes%>
-                <small>  <%= @shopping_list.notes %> </small>
-              <%else%>
-                <small> No notes...! Thanks for your help! </small>
-              <%end%>
-              </p>
-          </div>
-          <div class="notification-layer1">
+                <%if @shopping_list.user.photo.attached? %>
+                  <%= cl_image_tag @shopping_list.user.photo.key, class:"avatar avatar-show-position" %>
+                <%else%>
+                  <%= image_tag('avatar.png', class: "avatar avatar-show-position") %>
+                <%end%>
+        <div class="notification-layer1 mt-5 ml-4">
+              <p><strong>
+                    <%= @shopping_list.user.first_name %> <%= @shopping_list.user.last_name %>
+              </strong></p>
+        </div>
+        <div class="notification-layer2 ml-4">
             <p>
-             <strong> Delivery point:</strong> <br>
-             <small class="ml-3"> <%= @shopping_list.user.location %></small>
+              <strong>Note from <%= @shopping_list.user.first_name %>:</strong><br>
+              <%if @shopping_list.notes%>
+                <small class="ml-2">  <%= @shopping_list.notes %> </small>
+              <%else%>
+                <small class="ml-2"> No notes...! Thanks for your help! </small>
+              <%end%>
             </p>
-          </div>
+            <p><br>
+             <strong> Delivery point:</strong> <br>
+             <small class="ml-2"> <%= @shopping_list.user.location %></small>
+            </p>
         </div>
 
-          <!-- 1.1) IF RESQUEST IS NOT DELIVERED: -->
+<!-- 1.1) IF RESQUEST IS NOT PICKED: -->
           <% if @shopping_list.status %>
             <div class="pl-3">
-              <%= link_to "help #{@shopping_list.user.first_name} with the shopping list", create_order_path(@shopping_list.id), class: "btn-gradient " %>
-            </div>
-          <!-- 1.2) IF RESQUEST IS DELIVERED: -->
+              <%= link_to "Help this user", create_order_path(@shopping_list), class: "btn-gradient btn-show-dr-position2" %>
+              <%= link_to "Go back", shopping_lists_path, class: "btn-gradient btn-show-dr-position" %>
+             </div>
+<!-- 1.2) IF RESQUEST IS NOT DELIVERED: -->
           <% else %>
-            <div class="pl-3">
-              <%= link_to "You've delivered this order. Back!", picks_path(@shopping_list.order), class: "btn-gradient " %>
-              </div>
+              <% if @shopping_list.order.status %>
+                <div class="pl-3">
+                  <%= link_to "Mark as deliver", order_delivered_path(@shopping_list.order), method: :post, remote:true, class: "btn-gradient btn-show-dr-position" %>
+                  <%= link_to "Go back", shopping_lists_path, class: "btn-gradient btn-show-dr-position3" %>
+                </div>
+<!-- 1.3) IF RESQUEST IS DELIVERED: -->
+              <%else%>
+                <div class="pl-3">
+                  <%= link_to "You've delivered this order. Back!", picks_path(current_driver), class: "btn-gradient btn-show-dr-position" %>
+                </div>
+              <%end%>
           <% end %>
-
+      </div>
 <!-- 2) IF USER: -->
 
     <% elsif current_user %>
+    <div class=".col-sm-12 col-md-4">
+         <div class="notification-list mt-5">
+            <div class="delivery-layer bl">
+              <%if @shopping_list.status %>
+                <strong>Pending...</strong>
+              <% else %>
+                <strong>On its way!</strong>
+              <%end%>
+            </div>
+            <div class="notification-layer mt-4 mb-4">
+              <strong>Grocery List:</strong>
+            </div>
+        <% if @items %>
+          <% @items.each do |i| %>
+            <div class="notification-layer mt-1 ml-2">
+                <p>
+                  <%= i.quantity %> x
+                  <%= i.product_name %>
+                </p>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+    </div>
+
+    <div class=".col-sm-12 col-md-4">
        <div class="notification-show mt-5">
-          <div class="notification-layer mt-5">
+          <div class="notification-layer mt-4">
+
             <!-- 2.1) IF NOT DELIVERED: -->
             <%if @shopping_list.status %>
-            <p><strong>
+            <p><strong> Your shopping list has been posted!</strong></p> <br>
+            <p><strong class="bl">
                   Wait until someone helps you ... <br>
                   <small>
-                    Looks like people is quite busy at this moment, please be patient, a driver will accept your grocery list very soon. 
+                    Looks like people is quite busy at this moment, please be patient, a driver will accept your grocery list very soon.
                   </small>
             </strong></p>
             <!-- 2.2) IF  DELIVERED: -->
             <% else %>
-            <p><strong>
+            <p><strong class="bl">
                  <%= @shopping_list.driver.first_name %> is helping you... <br>
                 <small>
-                 The driver could contact you during the day, please keep your phone close. 
+                 The driver could contact you during the day, please keep your phone close.
                 </small>
             </strong></p>
             <% end %>
@@ -96,14 +132,16 @@
                   <%= shop.submit "Add" , class: "btn-gradient " ,style: "margin-left: 13px"  %>
                 <% end %>
             <% end %>
-            <div class="mt-1">
-             <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
-            </div>
               <%if @shopping_list.notes %>
-              <p> <strong>Your Notes: </strong> <br>
-                   <small> <%= @shopping_list.notes %> </small>
-              </p>
+              <div class="note-pos">
+                <p> <strong>Your Note: </strong> <br>
+                     <small> <%= @shopping_list.notes %> </small>
+                </p>
+                </div>
               <%end%>
+              <div class="mt-1">
+                <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5 btn-list-position", style: "margin: 13px"  %> </a>
+              </div>
           </div>
 
         </div>

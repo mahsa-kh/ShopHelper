@@ -11,10 +11,13 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, path: 'users'
-  # eg. http://localhost:3000/users/sign_in
-  devise_for :drivers, path: 'drivers'
-  # eg. http://localhost:3000/admins/sign_in
+
+  devise_for :users, path: 'users', controllers: { 
+    sessions: "users/sessions" 
+  }
+  devise_for :drivers, path: 'drivers', controllers: { 
+    sessions: "drivers/sessions" 
+  }
 
   resources :shopping_lists, only: [:index, :new, :create, :show, :edit, :update, :picks, :destroy] do
     resources :items, only: [:new, :create, :show]
