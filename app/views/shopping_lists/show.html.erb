@@ -47,7 +47,7 @@
                 <small class="ml-2"> No notes...! Thanks for your help! </small>
               <%end%>
             </p>
-            <p>
+            <p><br>
              <strong> Delivery point:</strong> <br>
              <small class="ml-2"> <%= @shopping_list.user.location %></small>
             </p>
@@ -105,9 +105,10 @@
     <div class=".col-sm-12 col-md-4">
        <div class="notification-show mt-5">
           <div class="notification-layer mt-4">
-            <p><strong> Your shopping list has been posted!</strong></p> <br>
+
             <!-- 2.1) IF NOT DELIVERED: -->
             <%if @shopping_list.status %>
+            <p><strong> Your shopping list has been posted!</strong></p> <br>
             <p><strong class="bl">
                   Wait until someone helps you ... <br>
                   <small>
