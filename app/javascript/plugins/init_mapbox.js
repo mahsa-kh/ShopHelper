@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl"
-import MapBoxGeocoder from '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { getCurrentPosition } from '@bouzuya/get-current-position';
 
 const initMapbox = () => {
@@ -74,7 +74,7 @@ const initMapbox = () => {
 
     console.log(markers)
     fitMapToMarkers(map, markers)
-  //   map.addControl(new MapBoxGeocoder({
+  //   map.addControl(new MapboxGeocoder({
   //     accessToken: mapboxgl.accessToken,
   //     mapboxgl: mapboxgl
   // }))

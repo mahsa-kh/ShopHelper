@@ -5,7 +5,16 @@
           <div class="notification mt-2 ml-3">
           <%= image_tag('cart-color.jpg', class: "avatar-large") %>
             <div class="notification-content">
-              <p><small><%= order.user.first_name %>    - Distance: </small></p>
+              <p><small><%= order.user.first_name %> </small>
+              
+              
+                <% if params[:lat] && params[:lng] %>
+                <i class="fas fa-location-arrow"></i>
+                <%=  order.user.distance_to([params[:lat], params[:lng]]).round%> Km
+                <% end %>
+              
+              
+              </p>
               <p><strong><%=  order.items.count %> items</strong> </p>
               <p> <div class="notification-actions-drv">
                 <% if !order.status %>
