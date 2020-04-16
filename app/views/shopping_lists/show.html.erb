@@ -1,8 +1,12 @@
+
 <div class="container">
   <div class="row justify-content-center ">
 
     <div class=".col-sm-12 col-md-2">
     </div>
+<!-- 1) IF DRIVER: -->
+
+    <% if current_driver %>
       <div class=".col-sm-12 col-md-4">
           <div class="notification-list mt-5">
             <div class="notification-layer mt-5 mb-4">
@@ -22,57 +26,79 @@
     </div>
 
     <div class=".col-sm-12 col-md-4">
-<!-- 1) IF DRIVER: -->
+      <div class="notification-show mt-5">
 
-      <% if current_driver %>
-
-        <div class="notification-show mt-5">
-          <div class="notification-layer mt-5">
-            <p><strong>
-              <%if @shopping_list.user.photo.attached? %>
-                  <%= cl_image_tag @shopping_list.user.photo.key, class:"avatar" %>
-                  <%else%>
-                  <%= image_tag('avatar.png', class: "avatar") %>
-                  <%end%>
-                  <%= @shopping_list.user.first_name %> <%= @shopping_list.user.last_name %>
-            </strong></p>
-          </div>
-          <div class="notification-layer">
-            <p><strong>Note from <%= @shopping_list.user.first_name %>:</strong><br>
+                <%if @shopping_list.user.photo.attached? %>
+                  <%= cl_image_tag @shopping_list.user.photo.key, class:"avatar avatar-show-position" %>
+                <%else%>
+                  <%= image_tag('avatar.png', class: "avatar avatar-show-position") %>
+                <%end%>
+        <div class="notification-layer1 mt-5 ml-4">
+              <p><strong>
+                    <%= @shopping_list.user.first_name %> ****** <%= @shopping_list.user.last_name %>
+              </strong></p>
+        </div>
+        <div class="notification-layer2 ml-4">
+            <p>
+              <strong>Note from <%= @shopping_list.user.first_name %>:</strong><br>
               <%if @shopping_list.notes%>
-                <small>  <%= @shopping_list.notes %> </small>
+                <small class="ml-2">  <%= @shopping_list.notes %> </small>
               <%else%>
-                <small> No notes...! Thanks for your help! </small>
+                <small class="ml-2"> No notes...! Thanks for your help! </small>
               <%end%>
-              </p>
-          </div>
-          <div class="notification-layer1">
+            </p>
             <p>
              <strong> Delivery point:</strong> <br>
-             <small class="ml-3"> <%= @shopping_list.user.location %></small>
+             <small class="ml-2"> <%= @shopping_list.user.location %></small>
             </p>
-          </div>
         </div>
 
           <!-- 1.1) IF RESQUEST IS NOT DELIVERED: -->
           <% if @shopping_list.status %>
             <div class="pl-3">
               <%= link_to "Help this user", create_order_path(@shopping_list), class: "btn-gradient " %>
-
+              <%= link_to "Go back", shopping_lists_path, class: "btn-gradient btn-show-dr-position" %>
              </div>
           <!-- 1.2) IF RESQUEST IS DELIVERED: -->
           <% else %>
             <div class="pl-3">
-              <%= link_to "You've delivered this order. Back!", picks_path(current_driver), class: "btn-gradient " %>
-              </div>
+              <%= link_to "You've delivered this order. Back!", picks_path(current_driver), class: "btn-gradient btn-show-dr-position" %>
+            </div>
           <% end %>
-
+      </div>
 <!-- 2) IF USER: -->
 
     <% elsif current_user %>
+
+    <div class=".col-sm-12 col-md-4">
+         <div class="notification-list mt-5">
+            <div class="delivery-layer">
+              <%if @shopping_list.status %>
+                <strong>Pending...</strong>
+              <% else %>
+                <strong>On its way!</strong>
+              <%end%>
+            </div>
+            <div class="notification-layer mt-4 mb-4">
+              <strong>Grocery List:</strong>
+            </div>
+        <% if @items %>
+          <% @items.each do |i| %>
+            <div class="notification-layer mt-1 ml-2">
+                <p>
+                  <%= i.quantity %> x
+                  <%= i.product_name %>
+                </p>
+            </div>
+          <% end %>
+        <% end %>
+        </div>
+    </div>
+
+    <div class=".col-sm-12 col-md-4">
        <div class="notification-show mt-5">
-          <div class="notification-layer mt-5">
-            <p><strong> Your shopping list has been posted!</strong></p>
+          <div class="notification-layer mt-4">
+            <p><strong> Your shopping list has been posted!</strong></p> <br>
             <!-- 2.1) IF NOT DELIVERED: -->
             <%if @shopping_list.status %>
             <p><strong>
@@ -104,7 +130,7 @@
                 </p>
               <%end%>
               <div class="mt-1">
-                <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5", style: "margin: 13px"  %> </a>
+                <a href="#" class="mt-5"> <%= link_to "Go to your lists!", view_all_path(current_user), class: "btn-gradient mt-5 btn-list-position", style: "margin: 13px"  %> </a>
               </div>
           </div>
 
