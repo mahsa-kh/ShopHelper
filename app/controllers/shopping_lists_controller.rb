@@ -27,7 +27,7 @@ class ShoppingListsController < ApplicationController
         lat: shopping_list.user.latitude,
         lng: shopping_list.user.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { user: shopping_list.user }),
-        picture: helpers.asset_url("sb.png")
+        picture: helpers.asset_url("cart-color.jpg")
       }
     end
   end

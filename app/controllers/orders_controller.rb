@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
         lat: order.user.latitude,
         lng: order.user.longitude,
         infoWindow: render_to_string(partial: "shopping_lists/info_window", locals: { user: order.user }),
-        picture: helpers.asset_url("sb.png")
+        picture: helpers.asset_url("cart-color.jpg")
       }
     end
 
